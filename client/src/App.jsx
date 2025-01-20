@@ -22,7 +22,6 @@ const App = () => {
       {/* Navbar is outside of Routes */}
       <Navbar />
       <Routes>
-<<<<<<< HEAD
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Project />} />
         <Route
@@ -36,10 +35,6 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
-=======
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/project" element={<Home />} />
->>>>>>> db1401aa1c282a02de4396da9a46051d41eaf32e
       </Routes>
       <Footer />
     </BrowserRouter>
