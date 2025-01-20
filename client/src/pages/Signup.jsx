@@ -127,6 +127,18 @@ const SignUp = () => {
             >
               Sign Up
             </button>
+              {/* Already registered section */}
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-700">
+              Already registered?{' '}
+              <a
+                href="/login"
+                className="text-blue-500 hover:underline"
+              >
+                Log in
+              </a>
+            </p>
+          </div>
           </form>
         </div>
       </div>
