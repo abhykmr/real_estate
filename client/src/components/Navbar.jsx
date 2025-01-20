@@ -1,20 +1,53 @@
 import { useState } from "react";
-import { FaHome, FaRobot, FaUser, FaBell } from "react-icons/fa";
-import { FiSearch, FiMenu, FiX } from "react-icons/fi";
+import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
-  // Toggle the mobile menu
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Toggle the desktop dropdown menu
-  // const toggleDesktopMenu = () => {
-  //   setIsDesktopMenuOpen(!isDesktopMenuOpen);
-  // };
+  const UserButton = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+      <div 
+        className="relative inline-block"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <button className="flex items-center space-x-2 text-gray-700 hover:text-blue-500 focus:outline-none p-2 rounded-full hover:bg-blue-50 transition-all duration-200">
+          <User className="w-5 h-5" />
+        </button>
+
+        {isHovered && (
+          <div className="absolute top-12 right-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-3 z-50 transform transition-all duration-200 ease-in-out opacity-100 scale-100">
+            <div className="absolute right-3 -top-2 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
+            <ul className="space-y-2">
+              <li className="group">
+                <a href="/login" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                  Login
+                </a>
+              </li>
+              <li className="group">
+                <a href="/dashboard" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                  Profile
+                </a>
+              </li>
+              <li className="border-t border-gray-100 my-2"></li>
+              <li className="group">
+                <a href="/signup" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -22,7 +55,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center">
-          <FaHome className="text-2xl text-blue-500 mr-2" />
+          <Home className="text-blue-500 mr-2 w-6 h-6" />
           <span className="text-xl font-bold text-blue-600">RealEstateCo</span>
         </div>
 
@@ -34,7 +67,7 @@ const Navbar = () => {
               placeholder="Search..."
               className="w-full border border-gray-300 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <FiSearch className="absolute left-3 top-2.5 text-gray-500" />
+            <Search className="absolute left-3 top-2.5 text-gray-500 w-5 h-5" />
           </div>
         </div>
 
@@ -55,14 +88,13 @@ const Navbar = () => {
               Register
             </a>
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <FaRobot className="w-5 h-5" />
+              <Settings className="w-5 h-5" />
             </button>
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <FaBell className="w-5 h-5" />
+              <Bell className="w-5 h-5" />
             </button>
-            <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <FaUser className="w-5 h-5" />
-            </button>
+
+            <UserButton />
           </div>
 
           {/* Mobile Hamburger Menu */}
@@ -72,9 +104,9 @@ const Navbar = () => {
               className="text-gray-700 hover:text-blue-500 focus:outline-none p-2"
             >
               {isMobileMenuOpen ? (
-                <FiX className="w-6 h-6" />
+                <X className="w-6 h-6" />
               ) : (
-                <FiMenu className="w-6 h-6" />
+                <Menu className="w-6 h-6" />
               )}
             </button>
           </div>

@@ -142,9 +142,11 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
+const MONGO_URI = process.env.MONGO_URI;
+
 // MongoDB Connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/signupDB", {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -187,6 +189,29 @@ app.post("/api/signup", async (req, res) => {
     }
   }
 });
+
+
+// Login Route
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found." });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials." });
+    }
+
+    res.status(200).json({ message: "Login successful!" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 
 // Catch-all route to serve a default response
 app.get("/", (req, res) => {
