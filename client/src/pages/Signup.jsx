@@ -148,8 +148,10 @@
 
 
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -180,6 +182,8 @@ const SignUp = () => {
       if (response.ok) {
         const data = await response.json();
         alert(data.message || "Sign up successful!");
+        navigate("/login")
+
       } else {
         const errorData = await response.json();
         alert(errorData.message || "Error during sign up!");
