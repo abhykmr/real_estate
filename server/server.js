@@ -142,9 +142,11 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
+const MONGO_URI = process.env.MONGO_URI;
+
 // MongoDB Connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/signupDB", {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
