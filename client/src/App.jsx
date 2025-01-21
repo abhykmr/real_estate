@@ -12,10 +12,8 @@ import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import SettingsPage from "./components/SettingsPage";
 import projects from "./data/projects"; // Import centralized projects data
-import Profile from "./pages/Profile";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
