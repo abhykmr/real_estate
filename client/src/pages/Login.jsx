@@ -57,14 +57,10 @@
 
 // export default Login;
 
-
-
-
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -86,13 +82,14 @@ const Login = () => {
 
       if (response.status === 200) {
         // Redirect to home page after successful login
+        setIsLogin(false);
         navigate("/");
       } else {
         // Display error message
         setError(data.message);
       }
     } catch (error) {
-      setError("Something went wrong. Please try again later.");
+      setError("Something went wrong. Please try again later.", error.message);
     }
   };
 

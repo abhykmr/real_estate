@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
 
-const Navbar = () => {
+const Navbar = ({ isLogin }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -47,6 +47,7 @@ const Navbar = () => {
               <li className="group">
                 <Link
                   to="/dashboard"
+                  href="/profile"
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
                 >
                   Profile
@@ -56,6 +57,7 @@ const Navbar = () => {
               <li className="group">
                 <Link
                   to="/signup"
+                  href="/signup"
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
                 >
                   Sign Up
@@ -111,6 +113,11 @@ const Navbar = () => {
             <Link to="/signup" className="text-gray-700 hover:text-blue-500">
               Register
             </Link>
+            {isLogin && (
+              <a href="/signup" className="text-gray-700 hover:text-blue-500">
+                Register
+              </a>
+            )}
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>

@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Project from "./pages/Project";
@@ -12,6 +12,7 @@ import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import projects from "./data/projects"; // Import centralized projects data
+import Profile from "./pages/Profile";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -22,10 +23,10 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <BrowserRouter>
       {/* Navbar is outside of Routes to appear on all pages */}
-      <Navbar />
-
+      {/* Navbar is outside of Routes */}
+      <Navbar isLogin={isLogin} />
       <Routes>
         {/* Home Route */}
         <Route path="/" element={<Home />} />
@@ -54,12 +55,15 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         {/* 404 Not Found Route */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* Footer is outside of Routes to appear on all pages */}
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 };
 
