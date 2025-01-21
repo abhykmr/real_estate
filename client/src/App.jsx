@@ -15,7 +15,7 @@ import Profile from "./pages/Profile";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import SettingsPage from "./components/SettingsPage";
 import projects from "./data/projects"; // Import centralized projects data
-import Profile from "./pages/Profile";
+import PropertyListingPage from "./components/PropertyDetails";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -37,6 +37,7 @@ const App = () => {
         {/* Project Route */}
         <Route path="/project" element={<Project />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/property" element={<PropertyListingPage />} />
 
         {/* Projects List Route */}
         <Route
