@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ isLogin }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
@@ -13,7 +13,7 @@ const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-      <div 
+      <div
         className="relative inline-block"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -27,18 +27,27 @@ const Navbar = () => {
             <div className="absolute right-3 -top-2 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
             <ul className="space-y-2">
               <li className="group">
-                <a href="/login" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <a
+                  href="/login"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Login
                 </a>
               </li>
               <li className="group">
-                <a href="/dashboard" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <a
+                  href="/dashboard"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Profile
                 </a>
               </li>
               <li className="border-t border-gray-100 my-2"></li>
               <li className="group">
-                <a href="/signup" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <a
+                  href="/signup"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Sign Up
                 </a>
               </li>
@@ -84,9 +93,11 @@ const Navbar = () => {
             <a href="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </a>
-            <a href="/signup" className="text-gray-700 hover:text-blue-500">
-              Register
-            </a>
+            {isLogin && (
+              <a href="/signup" className="text-gray-700 hover:text-blue-500">
+                Register
+              </a>
+            )}
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>
