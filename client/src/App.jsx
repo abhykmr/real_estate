@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import DynamicPage from "./pages/DynamicPage";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -20,7 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {/* Navbar is outside of Routes */}
-      <Navbar />
+      <Navbar isLogin={isLogin} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Project />} />
@@ -33,7 +34,8 @@ const App = () => {
           }
         />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+        <Route path="/:id" element={<DynamicPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
