@@ -5,7 +5,6 @@
 // const userRoutes = require('./routes/userroutes');
 // const cors = require('cors');
 
-
 // const app = express();
 
 // // Middleware
@@ -28,9 +27,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server running on port ${PORT}`);
 // });
-
-
-
 
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -118,18 +114,14 @@
 //   connectDB();
 // });
 
-
-
-
-
-
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const connectDB = require("./config/db");
+const { profileEnd } = require("console");
 require("dotenv").config();
 
 // Initialize app
@@ -137,7 +129,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
@@ -146,10 +137,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 // MongoDB Connection
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGO_URI)
   .then(() => console.log("MongoDB connected successfully!"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -190,7 +178,6 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-
 // Login Route
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
@@ -212,7 +199,6 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-
 // Catch-all route to serve a default response
 app.get("/", (req, res) => {
   res.json({ message: "Hello from Express!" });
@@ -227,4 +213,6 @@ app.get("/", (req, res) => {
 // Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  // console.log(process.env.MONGO_URI);
+  // connectDB();
 });
