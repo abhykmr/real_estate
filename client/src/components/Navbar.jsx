@@ -101,8 +101,8 @@ const Navbar = ({ isLogin }) => {
             <Link to="/" className="text-gray-700 hover:text-blue-500">
               Home
             </Link>
-            <Link to="/projects" className="text-gray-700 hover:text-blue-500">
-              Projects
+            <Link to="/our-project" className="text-gray-700 hover:text-blue-500">
+              Our Projects
             </Link>
             <Link
               to="/dashboard"
@@ -110,14 +110,8 @@ const Navbar = ({ isLogin }) => {
             >
               Dashboard
             </Link>
-            <Link to="/signup" className="text-gray-700 hover:text-blue-500">
-              Register
-            </Link>
-            {isLogin && (
-              <a href="/signup" className="text-gray-700 hover:text-blue-500">
-                Register
-              </a>
-            )}
+            
+           
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>

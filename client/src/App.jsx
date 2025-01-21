@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Project from "./pages/Project";
+import Project from "./pages/Project1";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import projects from "./data/projects"; // Import centralized projects data
 import Profile from "./pages/Profile";
+import Project1 from "./pages/Project1";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -32,7 +33,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Project Route */}
-        <Route path="/project" element={<Project />} />
+        <Route path="/our-project" element={<Project1 />} />
 
         {/* Projects List Route */}
         <Route path="/projects" element={<CurrentProjects projects={projects} />} />
