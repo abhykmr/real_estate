@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom";
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import {
-  Home,
-  User,
-  Bell,
-  Search,
-  Menu,
-  X,
-  Settings,
-} from "lucide-react";
+import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
 
 const Navbar = ({ isLogin }) => {
@@ -77,9 +69,7 @@ const Navbar = ({ isLogin }) => {
         {/* Logo Section */}
         <div className="flex items-center">
           <Home className="text-blue-500 mr-2 w-6 h-6" />
-          <span className="text-xl font-bold text-blue-600">
-            RealEstateCo
-          </span>
+          <span className="text-xl font-bold text-blue-600">RealEstateCo</span>
         </div>
 
         {/* Search Bar - Visible on medium and larger screens */}
@@ -104,10 +94,7 @@ const Navbar = ({ isLogin }) => {
             <Link to="/projects" className="text-gray-700 hover:text-blue-500">
               Projects
             </Link>
-            <Link
-              to="/dashboard"
-              className="text-gray-700 hover:text-blue-500"
-            >
+            <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </Link>
 
@@ -116,9 +103,11 @@ const Navbar = ({ isLogin }) => {
                 Register
               </a>
             )}
-           <Link to={"/settings"}><button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <Settings className="w-5 h-5" />
-            </button></Link> 
+            <Link to={"/settings"}>
+              <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
+                <Settings className="w-5 h-5" />
+              </button>
+            </Link>
 
             {/* Notification Dropdown */}
             <NotificationDropdown />
