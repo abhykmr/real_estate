@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
 
@@ -97,14 +97,17 @@ const Navbar = ({ isLogin }) => {
             <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </Link>
+
             {isLogin && (
               <a href="/signup" className="text-gray-700 hover:text-blue-500">
                 Register
               </a>
             )}
-            <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <Settings className="w-5 h-5" />
-            </button>
+            <Link to={"/settings"}>
+              <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
+                <Settings className="w-5 h-5" />
+              </button>
+            </Link>
 
             {/* Notification Dropdown */}
             <NotificationDropdown />

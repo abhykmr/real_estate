@@ -11,6 +11,7 @@ import CurrentProjects from "./components/CurrentProjects"; // Import CurrentPro
 import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SettingsPage from "./components/SettingsPage";
 import projects from "./data/projects"; // Import centralized projects data
 import Profile from "./pages/Profile";
 
@@ -33,6 +34,7 @@ const App = () => {
 
         {/* Project Route */}
         <Route path="/project" element={<Project />} />
+        <Route path="/settings" element={<SettingsPage />} />
 
         {/* Projects List Route */}
         <Route
