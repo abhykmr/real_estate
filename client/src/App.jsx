@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -11,9 +11,13 @@ import CurrentProjects from "./components/CurrentProjects"; // Import CurrentPro
 import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import projects from "./data/projects"; // Import centralized projects data
 import Profile from "./pages/Profile";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import SettingsPage from "./components/SettingsPage";
+import projects from "./data/projects"; // Import centralized projects data
 import Project1 from "./pages/Project1";
+
+
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -36,10 +40,16 @@ const App = () => {
         <Route path="/our-project" element={<Project1 />} />
 
         {/* Projects List Route */}
-        <Route path="/projects" element={<CurrentProjects projects={projects} />} />
+        <Route
+          path="/projects"
+          element={<CurrentProjects projects={projects} />}
+        />
 
         {/* Project Detail Route */}
-        <Route path="/projects/:id" element={<ProjectDetail projects={projects} />} />
+        <Route
+          path="/projects/:id"
+          element={<ProjectDetail projects={projects} />}
+        />
 
         {/* Protected Dashboard Route */}
         <Route
@@ -58,7 +68,6 @@ const App = () => {
         {/* 404 Not Found Route */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
 

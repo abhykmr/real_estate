@@ -51,7 +51,7 @@ const apps = [
   // Add more apps as needed
 ];
 
-const Project = () => {
+const Project1 = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Navbar */}
@@ -85,4 +85,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Project1;
