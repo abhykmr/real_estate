@@ -13,9 +13,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import SettingsPage from "./components/SettingsPage";
+import projects from "./data/projects"; // Import centralized projects data
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 // import SettingsPage from "./components/SettingsPage";
-import projects from "./data/projects"; // Import centralized projects data
+// import projects from "./data/projects"; // Import centralized projects data
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 // import SettingsPage from "./components/SettingsPage";
 // import projects from "./data/projects"; // Import centralized projects data
