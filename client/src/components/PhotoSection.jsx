@@ -11,7 +11,7 @@ const PhotoSection = () => {
       </h2>
       <div className="flex flex-col items-center">
         <img
-          src="img-1.jpg"
+          src="images/img-1.jpg"
           alt="User Avatar"
           className="w-24 h-24 rounded-full mb-4"
         />
