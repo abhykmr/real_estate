@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -34,6 +35,7 @@ const App = () => {
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

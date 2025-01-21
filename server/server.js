@@ -5,7 +5,6 @@
 // const userRoutes = require('./routes/userroutes');
 // const cors = require('cors');
 
-
 // const app = express();
 
 // // Middleware
@@ -28,9 +27,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server running on port ${PORT}`);
 // });
-
-
-
 
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -118,11 +114,6 @@
 //   connectDB();
 // });
 
-
-
-
-
-
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -146,10 +137,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 // MongoDB Connection
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGO_URI)
   .then(() => console.log("MongoDB connected successfully!"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -190,7 +178,6 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-
 // Login Route
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
@@ -211,7 +198,6 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
 
 // Catch-all route to serve a default response
 app.get("/", (req, res) => {
