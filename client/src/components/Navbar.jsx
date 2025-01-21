@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -87,9 +88,11 @@ const Navbar = () => {
             <a href="/signup" className="text-gray-700 hover:text-blue-500">
               Register
             </a>
+            <Link to="/settings">
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>
+            </Link>
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Bell className="w-5 h-5" />
             </button>
