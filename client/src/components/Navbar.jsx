@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ isLogin }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
@@ -36,7 +36,11 @@ const Navbar = () => {
               </li>
               <li className="group">
                 <a
+<<<<<<< HEAD
                   href="/profile"
+=======
+                  href="/dashboard"
+>>>>>>> a3008aa4aa3f107d7ce21ebec6ff296a4b136108
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
                 >
                   Profile
@@ -93,9 +97,11 @@ const Navbar = () => {
             <a href="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </a>
-            <a href="/signup" className="text-gray-700 hover:text-blue-500">
-              Register
-            </a>
+            {isLogin && (
+              <a href="/signup" className="text-gray-700 hover:text-blue-500">
+                Register
+              </a>
+            )}
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>
