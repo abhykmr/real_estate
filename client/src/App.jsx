@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Project from "./pages/Project";
+import Project from "./pages/Project1";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -12,10 +12,13 @@ import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import SettingsPage from "./components/SettingsPage";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import SettingsPage from "./components/SettingsPage";
 import projects from "./data/projects"; // Import centralized projects data
 import PropertyListingPage from "./components/PropertyDetails";
+import Project1 from "./pages/Project1";
+
+
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -38,6 +41,7 @@ const App = () => {
         <Route path="/project" element={<Project />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/property" element={<PropertyListingPage />} />
+        <Route path="/our-project" element={<Project1 />} />
 
         {/* Projects List Route */}
         <Route
