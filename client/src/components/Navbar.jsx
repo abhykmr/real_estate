@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Home,
   User,
@@ -110,17 +110,15 @@ const Navbar = ({ isLogin }) => {
             >
               Dashboard
             </Link>
-            <Link to="/signup" className="text-gray-700 hover:text-blue-500">
-              Register
-            </Link>
+
             {isLogin && (
               <a href="/signup" className="text-gray-700 hover:text-blue-500">
                 Register
               </a>
             )}
-            <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
+           <Link to={"/settings"}><button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
-            </button>
+            </button></Link> 
 
             {/* Notification Dropdown */}
             <NotificationDropdown />
