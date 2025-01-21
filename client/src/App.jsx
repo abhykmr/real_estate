@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -35,10 +35,16 @@ const App = () => {
         <Route path="/project" element={<Project />} />
 
         {/* Projects List Route */}
-        <Route path="/projects" element={<CurrentProjects projects={projects} />} />
+        <Route
+          path="/projects"
+          element={<CurrentProjects projects={projects} />}
+        />
 
         {/* Project Detail Route */}
-        <Route path="/projects/:id" element={<ProjectDetail projects={projects} />} />
+        <Route
+          path="/projects/:id"
+          element={<ProjectDetail projects={projects} />}
+        />
 
         {/* Protected Dashboard Route */}
         <Route
