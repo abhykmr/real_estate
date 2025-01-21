@@ -37,8 +37,9 @@ const Navbar = ({ isLogin }) => {
                 </Link>
               </li>
               <li className="group">
-                  <Link
-                  to="/dashboard"
+                <Link
+            
+                  to="/Profile"
                   href="/profile"
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
                 >
@@ -91,18 +92,17 @@ const Navbar = ({ isLogin }) => {
             <Link to="/" className="text-gray-700 hover:text-blue-500">
               Home
             </Link>
-            <Link to="/projects" className="text-gray-700 hover:text-blue-500">
-              Projects
+            <Link to="/our-project" className="text-gray-700 hover:text-blue-500">
+              Our Projects
             </Link>
             <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </Link>
+            
+           
+         
 
-            {isLogin && (
-              <a href="/signup" className="text-gray-700 hover:text-blue-500">
-                Register
-              </a>
-            )}
+           
             <Link to={"/settings"}>
               <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
                 <Settings className="w-5 h-5" />
