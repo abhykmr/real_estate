@@ -19,7 +19,7 @@ const PhotoSection = () => {
       {/* Content */}
       <div className="flex flex-col items-center justify-center flex-grow">
         <img
-          src="img-1.jpg"
+          src="images/img-1.jpg"
           alt="User Avatar"
           className="w-24 h-24 rounded-full mb-3 object-cover"
         />
