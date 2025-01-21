@@ -48,37 +48,37 @@ const Dashboard = () => {
       id: 1,
       name: "Sunset Retreat Villa",
       price: "$7548",
-      image: "img-1.jpg",
+      image: "/images/img-1.jpg",
     },
     {
       id: 2,
       name: "Riverside Haven",
       price: "$1548",
-      image: "img-2.jpg",
+      image: "/images/img-2.jpg",
     },
     {
       id: 3,
       name: "Mountain View Villa",
       price: "$2048",
-      image: "img-3.jpg",
+      image: "/images/img-3.jpg",
     },
     {
       id: 4,
       name: "Ocean Breeze Cottage",
       price: "$6948",
-      image: "img-4.jpg",
+      image: "/images/img-4.jpg",
     },
     {
       id: 5,
       name: "Forest Hideaway",
       price: "$4568",
-      image: "img-5.jpg",
+      image: "/images/img-5.jpg",
     },
     {
       id: 6,
       name: "Lakefront Residence",
       price: "$9200",
-      image: "img-6.jpg",
+      image: "/images/img-6.jpg",
     },
   ];
 

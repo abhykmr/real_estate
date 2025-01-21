@@ -96,7 +96,7 @@ const Login = ({ setIsLogin }) => {
   return (
     <div
       className="bg-cover bg-center h-screen"
-      style={{ backgroundImage: "url('/img-2.jpg')" }}
+      style={{ backgroundImage: "url('/images/img-2.jpg')" }}
     >
       <div className="flex justify-center items-center h-full">
         <div className="bg-white p-8 rounded-lg shadow-lg w-96">
