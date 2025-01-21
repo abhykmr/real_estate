@@ -1,14 +1,33 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const MONGO_URI = process.env.MONGO_URI;
+// const MONGO_URI = process.env.MONGO_URI;
+
+// const connectDB = async () => {
+//   try {
+//     const conn = await mongoose.connect(MONGO_URI);
+//     console.log(`MongoDB Connected: ${conn.connection.host}`);
+//   } catch (error) {
+//     console.log("An error occurred:", error.message);
+//     process.exit(1); // Exit the process with failure
+//   }
+// };
+
+// module.exports = connectDB;
+
+
+
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    console.log("An error occurred:", error.message);
-    process.exit(1); // Exit the process with failure
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
   }
 };
 
