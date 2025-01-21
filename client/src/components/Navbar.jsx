@@ -36,11 +36,7 @@ const Navbar = ({ isLogin }) => {
               </li>
               <li className="group">
                 <a
-<<<<<<< HEAD
                   href="/profile"
-=======
-                  href="/dashboard"
->>>>>>> a3008aa4aa3f107d7ce21ebec6ff296a4b136108
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
                 >
                   Profile
