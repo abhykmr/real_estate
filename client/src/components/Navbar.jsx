@@ -1,9 +1,19 @@
-import { useState } from "react";
-import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
+// src/components/Navbar.jsx
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Home,
+  User,
+  Bell,
+  Search,
+  Menu,
+  X,
+  Settings,
+} from "lucide-react";
+import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -13,7 +23,7 @@ const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-      <div 
+      <div
         className="relative inline-block"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -27,20 +37,29 @@ const Navbar = () => {
             <div className="absolute right-3 -top-2 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
             <ul className="space-y-2">
               <li className="group">
-                <a href="/login" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <Link
+                  to="/login"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Login
-                </a>
+                </Link>
               </li>
               <li className="group">
-                <a href="/dashboard" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <Link
+                  to="/dashboard"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Profile
-                </a>
+                </Link>
               </li>
               <li className="border-t border-gray-100 my-2"></li>
               <li className="group">
-                <a href="/signup" className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200">
+                <Link
+                  to="/signup"
+                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                >
                   Sign Up
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -56,7 +75,9 @@ const Navbar = () => {
         {/* Logo Section */}
         <div className="flex items-center">
           <Home className="text-blue-500 mr-2 w-6 h-6" />
-          <span className="text-xl font-bold text-blue-600">RealEstateCo</span>
+          <span className="text-xl font-bold text-blue-600">
+            RealEstateCo
+          </span>
         </div>
 
         {/* Search Bar - Visible on medium and larger screens */}
@@ -75,25 +96,29 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           {/* Desktop Menu Links */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="/" className="text-gray-700 hover:text-blue-500">
+            <Link to="/" className="text-gray-700 hover:text-blue-500">
               Home
-            </a>
-            <a href="/project" className="text-gray-700 hover:text-blue-500">
+            </Link>
+            <Link to="/projects" className="text-gray-700 hover:text-blue-500">
               Projects
-            </a>
-            <a href="/dashboard" className="text-gray-700 hover:text-blue-500">
+            </Link>
+            <Link
+              to="/dashboard"
+              className="text-gray-700 hover:text-blue-500"
+            >
               Dashboard
-            </a>
-            <a href="/signup" className="text-gray-700 hover:text-blue-500">
+            </Link>
+            <Link to="/signup" className="text-gray-700 hover:text-blue-500">
               Register
-            </a>
+            </Link>
             <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
               <Settings className="w-5 h-5" />
             </button>
-            <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
-              <Bell className="w-5 h-5" />
-            </button>
 
+            {/* Notification Dropdown */}
+            <NotificationDropdown />
+
+            {/* User Dropdown */}
             <UserButton />
           </div>
 
@@ -113,60 +138,38 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Desktop Dropdown Menu */}
-      {isDesktopMenuOpen && (
-        <div className="md:block bg-white shadow-md">
-          <div className="px-4 pt-2 pb-4 space-y-1">
-            <a href="/" className="block text-gray-700 hover:text-blue-500">
-              Home
-            </a>
-            <a
-              href="/project"
-              className="block text-gray-700 hover:text-blue-500"
-            >
-              Projects
-            </a>
-            <a
-              href="/dashboard"
-              className="block text-gray-700 hover:text-blue-500"
-            >
-              Dashboard
-            </a>
-            <a
-              href="/register"
-              className="block text-gray-700 hover:text-blue-500"
-            >
-              Register
-            </a>
-          </div>
-        </div>
-      )}
-
       {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-4 pt-2 pb-4 space-y-1">
-            <a href="/" className="block text-gray-700 hover:text-blue-500">
+            <Link to="/" className="block text-gray-700 hover:text-blue-500">
               Home
-            </a>
-            <a
-              href="/project"
+            </Link>
+            <Link
+              to="/projects"
               className="block text-gray-700 hover:text-blue-500"
             >
               Projects
-            </a>
-            <a
-              href="/dashboard"
+            </Link>
+            <Link
+              to="/dashboard"
               className="block text-gray-700 hover:text-blue-500"
             >
               Dashboard
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/signup"
               className="block text-gray-700 hover:text-blue-500"
             >
-              Contact
-            </a>
+              Register
+            </Link>
+            <Link
+              to="/settings"
+              className="block text-gray-700 hover:text-blue-500"
+            >
+              Settings
+            </Link>
+            {/* Add more links as needed */}
           </div>
         </div>
       )}
