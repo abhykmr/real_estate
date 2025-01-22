@@ -9,7 +9,7 @@ const BackgroundPictureSection = () => {
   const handleAddProperty = () => {
     // Implement the logic to add a new property
     // For example, open a modal or navigate to an add property form
-    console.log("Add Property button clicked");
+    // console.log("Add Property button clicked");
     // Example: Open a modal (assuming you have a modal component)
     // setShowModal(true);
   };
@@ -25,13 +25,13 @@ const BackgroundPictureSection = () => {
             aria-label="Edit My Properties"
             onClick={() => {
               // Implement edit functionality
-              console.log("Edit My Properties button clicked");
+              // console.log("Edit My Properties button clicked");
             }}
           >
             <i className="fas fa-edit"></i>
           </button>
           <img
-            src="img-12.jpg"
+            src="/images/img-10.jpg"
             alt="Company Logo"
             className="w-6 h-6 rounded-full object-cover"
           />
@@ -42,14 +42,14 @@ const BackgroundPictureSection = () => {
       <div className="flex flex-wrap justify-start gap-4">
         {/* Existing Property Cards */}
         <Card
-          imageSrc="img-12.jpg"
+          imageSrc="images/img-11.jpg"
           imageAlt="Property 1"
           title="Property 1"
           description="Description of Property 1"
         />
 
         <Card
-          imageSrc="img-3.jpg"
+          imageSrc="/images/img-3.jpg"
           imageAlt="Property 2"
           title="Property 2"
           description="Description of Property 2"

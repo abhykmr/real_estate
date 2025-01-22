@@ -10,7 +10,7 @@ const ProjectDetail = ({ projects }) => {
   if (!project) {
     return (
       <div className="p-4">
-        <Link to="/projects">
+        <Link to="/our-project">
           <button className="text-blue-500 hover:underline mb-4">
             ← Back to Projects
           </button>
@@ -23,7 +23,7 @@ const ProjectDetail = ({ projects }) => {
 
   return (
     <div className="project-detail-container p-8 max-w-3xl mx-auto">
-      <Link to="/projects">
+      <Link to="/our-project">
         <button className="text-blue-500 hover:underline mb-4">
           ← Back to Projects
         </button>
@@ -37,7 +37,6 @@ const ProjectDetail = ({ projects }) => {
       <p className="text-gray-700 mt-2">
         {project.description}
       </p>
-
       <Link to="/application">
         <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition-colors duration-300">
           BOOK NOW
