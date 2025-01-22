@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Your frontend URL
+  origin: "https://real-estate-client-b9wq.onrender.com", // Your frontend URL
   credentials: true, // Allow cookies to be sent
 };
 app.use(cors(corsOptions));
