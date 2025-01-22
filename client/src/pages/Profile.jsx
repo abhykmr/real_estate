@@ -33,14 +33,11 @@ const ProfilePage = () => {
         {/* Added px-4 for horizontal padding */}
         {/* Header */}
         <div className="text-center mb-10">
-<<<<<<< HEAD
-          <br></br>
+          <br />
           <h1 className="text-3xl font-bold text-gray-800">Welcome, Lorey</h1>
-=======
           <h1 className="text-3xl py-3 font-bold text-gray-800">
             Welcome, Lorey
           </h1>
->>>>>>> 43b5dda83680a9a25918dbfc50a1a9afc48ea125
           <p className="text-gray-600">Tue, 07 November 2022</p>
         </div>
         {/* Edit Profile Form */}

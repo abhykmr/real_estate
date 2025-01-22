@@ -11,25 +11,20 @@ const BackgroundPictureSection = () => {
 
   // Handler for adding a new property
   const handleAddProperty = () => {
-<<<<<<< HEAD
     // Navigate to the Project.jsx page in the pages folder
-    navigate("/project");
-=======
+    navigate("/our-project");
     // Implement the logic to add a new property
     // For example, open a modal or navigate to an add property form
     // console.log("Add Property button clicked");
     // Example: Open a modal (assuming you have a modal component)
     // setShowModal(true);
->>>>>>> 43b5dda83680a9a25918dbfc50a1a9afc48ea125
   };
 
   return (
     <div className="bg-white shadow rounded-lg p-4 flex flex-col h-auto relative">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-<<<<<<< HEAD
         <h1 className="text-lg font-semibold text-gray-800">MY PROPERTIES</h1>
-=======
         <h2 className="text-lg font-semibold text-gray-800">My Properties</h2>
         <div className="flex items-center space-x-2">
           <button
@@ -48,7 +43,6 @@ const BackgroundPictureSection = () => {
             className="w-6 h-6 rounded-full object-cover"
           />
         </div>
->>>>>>> 43b5dda83680a9a25918dbfc50a1a9afc48ea125
       </div>
 
       {/* Cards Section */}
