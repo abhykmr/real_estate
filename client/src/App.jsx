@@ -1,45 +1,88 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+// src/App.jsx
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Project from "./pages/Project";
+// import Project from "./pages/Project1";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import { useState } from "react";
+import CurrentProjects from "./components/CurrentProjects"; // Import CurrentProjects
+import ProjectDetail from "./components/ProjectDetail"; // Import ProjectDetail
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import SettingsPage from "./components/SettingsPage";
+import projects from "./data/projects"; // Import centralized projects data
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import SettingsPage from "./components/SettingsPage";
+// import projects from "./data/projects"; // Import centralized projects data
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import SettingsPage from "./components/SettingsPage";
+// import projects from "./data/projects"; // Import centralized projects data
+// import projects from "./data/projects"; // Import centralized projects data
+import PropertyListingPage from "./components/PropertyDetails";
+import Project1 from "./pages/Project1";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true); // Toggle for login state
+  const [isLogin, setIsLogin] = useState(false); // Toggle for login state
 
   // PrivateRoute for Dashboard
-  const PrivateRoute = ({ children }) => {
-    return isLogin ? children : <Navigate to="/login" replace />;
-  };
+  // const PrivateRoute = ({ children }) => {
+  //   return isLogin ? children : <Navigate to="/login" replace />;
+  // };
 
   return (
     <BrowserRouter>
+      {/* Navbar is outside of Routes to appear on all pages */}
       {/* Navbar is outside of Routes */}
       <Navbar isLogin={isLogin} />
       <Routes>
+        {/* Home Route */}
         <Route path="/" element={<Home />} />
-        <Route path="/project" element={<Project />} />
+
+        {/* Project Route */}
+        <Route path="/our-project" element={<Project1 />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/property" element={<PropertyListingPage />} />
+        <Route path="/our-project" element={<Project1 />} />
+
+        {/* Projects List Route */}
         <Route
+          path="/projects"
+          element={<CurrentProjects projects={projects} />}
+        />
+
+        {/* Project Detail Route */}
+        <Route
+          path="/projects/:id"
+          element={<ProjectDetail projects={projects} />}
+        />
+
+        {/* Protected Dashboard Route */}
+        {/* <Route
           path="/dashboard"
           element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
           }
-        />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        /> */}
+        {/* {isLogin ? (
+          <Route path="/dahsboard" element={<Dashboard />} />
+        ) : (
+          <Route path="/login" element={<Login />} />
+        )} */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* 404 Not Found Route */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
+
+      {/* Footer is outside of Routes to appear on all pages */}
       <Footer />
     </BrowserRouter>
   );
