@@ -13,12 +13,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import SettingsPage from "./components/SettingsPage";
-import projects from "./data/projects"; // Import centralized projects data
+// Import centralized projects data
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 // import SettingsPage from "./components/SettingsPage";
 import projects from "./data/projects"; // Import centralized projects data
 import PropertyListingPage from "./components/PropertyDetails";
 import Project1 from "./pages/Project1";
+import Application from "./components/Application";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle for login state
@@ -48,6 +49,9 @@ const App = () => {
           path="/projects"
           element={<CurrentProjects projects={projects} />}
         />
+
+ {/* Application Form Route */}
+ <Route path="/application" element={<Application />} />
 
         {/* Project Detail Route */}
         <Route
