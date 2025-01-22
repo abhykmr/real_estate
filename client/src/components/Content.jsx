@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const OverlayContent = () => {
   return (
@@ -20,9 +20,11 @@ const OverlayContent = () => {
             Search
           </button>
         </div>
-        <button className="px-8 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
-          View Listings
-        </button>
+        <Link to="/our-project">
+          <button className="px-8 py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
+            View Listings
+          </button>
+        </Link>
       </div>
     </div>
   );

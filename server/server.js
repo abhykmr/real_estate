@@ -1,9 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+// const mongoose = require("mongoose");
+// const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const path = require("path");
+// const path = require("path");
 const connectDB = require("./config/db");
 require("dotenv").config();
 const authRouter = require("./routes/authRoutes");
@@ -21,7 +21,6 @@ const corsOptions = {
   origin: "http://localhost:5173", // Your frontend URL
   credentials: true, // Allow cookies to be sent
 };
-
 app.use(cors(corsOptions));
 
 // Routes

@@ -20,6 +20,8 @@ import projects from "./data/projects"; // Import centralized projects data
 // import "@fortawesome/fontawesome-free/css/all.min.css";
 // import SettingsPage from "./components/SettingsPage";
 // import projects from "./data/projects"; // Import centralized projects data
+// import projects from "./data/projects"; // Import centralized projects data
+import PropertyListingPage from "./components/PropertyDetails";
 import Project1 from "./pages/Project1";
 
 const App = () => {
@@ -40,6 +42,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
 
         {/* Project Route */}
+        <Route path="/our-project" element={<Project1 />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/property" element={<PropertyListingPage />} />
         <Route path="/our-project" element={<Project1 />} />
 
         {/* Projects List Route */}

@@ -48,37 +48,37 @@ const Dashboard = () => {
       id: 1,
       name: "Sunset Retreat Villa",
       price: "$7548",
-      image: "img-1.jpg",
+      image: "/images/img-1.jpg",
     },
     {
       id: 2,
       name: "Riverside Haven",
       price: "$1548",
-      image: "img-2.jpg",
+      image: "/images/img-2.jpg",
     },
     {
       id: 3,
       name: "Mountain View Villa",
       price: "$2048",
-      image: "img-3.jpg",
+      image: "/images/img-3.jpg",
     },
     {
       id: 4,
       name: "Ocean Breeze Cottage",
       price: "$6948",
-      image: "img-4.jpg",
+      image: "/images/img-4.jpg",
     },
     {
       id: 5,
       name: "Forest Hideaway",
       price: "$4568",
-      image: "img-5.jpg",
+      image: "/images/img-5.jpg",
     },
     {
       id: 6,
       name: "Lakefront Residence",
       price: "$9200",
-      image: "img-6.jpg",
+      image: "/images/img-6.jpg",
     },
   ];
 
@@ -185,6 +185,14 @@ const Dashboard = () => {
         >
           <FaChevronLeft />
         </button>
+        
+       
+       <a href="/property"> <button className="relative px-6 py-3 font-medium text-white bg-blue-600 rounded-lg shadow-md group overflow-hidden text-left ml-0">
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out"></span>
+  <span className="absolute inset-0 w-full h-full bg-blue-600 group-hover:opacity-0 transition-opacity duration-300"></span>
+  <span className="relative">Explore all</span>
+</button></a>
+
 
         {/* Scroll Container */}
         <div ref={scrollContainerRef} className="overflow-x-hidden py-4">
