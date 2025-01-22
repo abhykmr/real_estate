@@ -196,6 +196,8 @@ const login = async (req, res) => {
       });
     }
 
+    // console.log("User found:", user);
+
     // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {

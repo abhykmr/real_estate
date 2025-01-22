@@ -4,9 +4,11 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 // const path = require("path");
-const connectDB = require("./config/db");
+const connectDB = require("./config/db.js");
 require("dotenv").config();
-const authRouter = require("./routes/authRoutes");
+// const authRouter = require("./routes/authroutes.js");
+const authRouter = require("./routes/authroutes.js");
+
 // const userRouter = require("./routes/userRoutes");
 
 // Initialize app
