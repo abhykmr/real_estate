@@ -185,6 +185,14 @@ const Dashboard = () => {
         >
           <FaChevronLeft />
         </button>
+        
+       
+       <a href="/property"> <button className="relative px-6 py-3 font-medium text-white bg-blue-600 rounded-lg shadow-md group overflow-hidden text-left ml-0">
+  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out"></span>
+  <span className="absolute inset-0 w-full h-full bg-blue-600 group-hover:opacity-0 transition-opacity duration-300"></span>
+  <span className="relative">Explore all</span>
+</button></a>
+
 
         {/* Scroll Container */}
         <div ref={scrollContainerRef} className="overflow-x-hidden py-4">
