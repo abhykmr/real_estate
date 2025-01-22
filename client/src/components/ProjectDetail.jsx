@@ -10,7 +10,7 @@ const ProjectDetail = ({ projects }) => {
   if (!project) {
     return (
       <div className="p-4">
-        <Link to="/projects">
+        <Link to="/our-project">
           <button className="text-blue-500 hover:underline mb-4">
             ← Back to Projects
           </button>
@@ -23,7 +23,7 @@ const ProjectDetail = ({ projects }) => {
 
   return (
     <div className="project-detail-container p-8 max-w-3xl mx-auto">
-      <Link to="/projects">
+      <Link to="/our-project">
         <button className="text-blue-500 hover:underline mb-4">
           ← Back to Projects
         </button>
@@ -34,9 +34,7 @@ const ProjectDetail = ({ projects }) => {
         alt={project.name}
         className="w-full h-64 object-cover rounded-lg my-4"
       />
-      <p className="text-gray-700 mt-2">
-        {project.description}
-      </p>
+      <p className="text-gray-700 mt-2">{project.description}</p>
       {/* You can add more detailed information about the project here */}
     </div>
   );

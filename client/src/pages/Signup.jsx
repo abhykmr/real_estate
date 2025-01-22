@@ -136,19 +136,8 @@
 
 // export default SignUp;
 
-
-
-
-
-
-
-
-
-
-
-
-import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -182,8 +171,7 @@ const SignUp = () => {
       if (response.ok) {
         const data = await response.json();
         alert(data.message || "Sign up successful!");
-        navigate("/login")
-
+        navigate("/login");
       } else {
         const errorData = await response.json();
         alert(errorData.message || "Error during sign up!");
@@ -198,7 +186,7 @@ const SignUp = () => {
     <div
       className="bg-cover bg-center h-screen"
       style={{
-        backgroundImage: "url('/img-3.jpg')",
+        backgroundImage: "url('/images/img-3.jpg')",
       }}
     >
       <div className="flex justify-center items-center h-full">
@@ -299,18 +287,15 @@ const SignUp = () => {
             >
               Sign Up
             </button>
-              {/* Already registered section */}
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-700">
-              Already registered?{' '}
-              <a
-                href="/login"
-                className="text-blue-500 hover:underline"
-              >
-                Log in
-              </a>
-            </p>
-          </div>
+            {/* Already registered section */}
+            <div className="mt-4 text-center">
+              <p className="text-sm text-gray-700">
+                Already registered?{" "}
+                <a href="/login" className="text-blue-500 hover:underline">
+                  Log in
+                </a>
+              </p>
+            </div>
           </form>
         </div>
       </div>
