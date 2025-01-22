@@ -49,7 +49,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    console.log("User found:", user);
+    // console.log("User found:", user);
 
     // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
