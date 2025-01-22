@@ -36,7 +36,7 @@ const PhotoSection = ({ userName }) => {
       {/* Content */}
       <div className="flex flex-col items-center justify-center flex-grow">
         <img
-          src="/mages/img-1.jpg"
+          src={photo}
           alt="User Avatar"
           className="w-24 h-24 rounded-full mb-3 object-cover"
         />

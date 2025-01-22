@@ -25,7 +25,7 @@ const BackgroundPictureSection = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-lg font-semibold text-gray-800">MY PROPERTIES</h1>
-        <h2 className="text-lg font-semibold text-gray-800">My Properties</h2>
+
         <div className="flex items-center space-x-2">
           <button
             className="text-blue-500 hover:text-blue-700 transition-colors duration-200"
@@ -37,11 +37,6 @@ const BackgroundPictureSection = () => {
           >
             <i className="fas fa-edit"></i>
           </button>
-          <img
-            src="/images/img-10.jpg"
-            alt="Company Logo"
-            className="w-6 h-6 rounded-full object-cover"
-          />
         </div>
       </div>
 

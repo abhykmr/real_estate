@@ -35,9 +35,7 @@ const ProfilePage = () => {
         <div className="text-center mb-10">
           <br />
           <h1 className="text-3xl font-bold text-gray-800">Welcome, Lorey</h1>
-          <h1 className="text-3xl py-3 font-bold text-gray-800">
-            Welcome, Lorey
-          </h1>
+
           <p className="text-gray-600">Tue, 07 November 2022</p>
         </div>
         {/* Edit Profile Form */}
@@ -58,6 +56,7 @@ const ProfilePage = () => {
                 data={formData}
                 onEdit={handleEditToggle}
               />
+              <br></br>
             </div>
 
             {/* Right Column: Other Sections */}
@@ -65,7 +64,6 @@ const ProfilePage = () => {
               <BackgroundPictureSection onEdit={handleEditToggle} />
               <SocialMediaSection onEdit={handleEditToggle} />
               <QuoteSection onEdit={handleEditToggle} />
-              <AboutSection onEdit={handleEditToggle} />
             </div>
           </div>
         )}
