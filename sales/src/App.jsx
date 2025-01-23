@@ -1,27 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import AddPropertyPage from './components/AddPropertyPage';
 import ImageSlider from './components/ImageSlider';
 
+const HomePage = () => (
+  <div
+    className="min-h-screen bg-gray-100 bg-cover bg-center"
+    style={{ backgroundImage: "url('/pexels-pixabay-326311.jpg')" }}
+  >
+    {/* Navbar */}
+    
+
+    {/* Main Content */}
+    <div className="p-6 bg-white bg-opacity-90 rounded-xl shadow-lg max-w-4xl mx-auto mt-10">
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-6 text-center">
+        Welcome to Land to Lavish!
+      </h1>
+      <p className="text-lg text-gray-600 text-center mb-8">
+        Maximize your property sales potential — upload your listings and let buyers find you effortlessly!
+      </p>
+
+      {/* Image Slider */}
+      <div className="p-6 bg-gray-50 rounded-lg shadow-md">
+        <ImageSlider />
+      </div>
+    </div>
+  </div>
+);
 
 const App = () => {
   return (
-    <div 
-      className="min-h-screen bg-gray-100 bg-cover bg-center" 
-      style={{ backgroundImage: "url('/photo-1565402170291-8491f14678db.avif')" }}
-    >
+    <Router>
       <Navbar />
-      <div className="p-6 bg-black bg-opacity-80 rounded-lg shadow-md max-w-4xl mx-auto mt-10">
-        <h1 className="text-2xl font-semibold text-white mb-6">Welcome to Land to Lavish!</h1>
-        <p className="text-gray-300">Explore the site to get started!</p>
-        <div className="bg-black p-4 rounded-lg mt-6">
-          <ImageSlider className="text-white" />
-        </div>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/add-property" element={<AddPropertyPage />} />
+      </Routes>
+    </Router>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 export default App;
