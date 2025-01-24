@@ -12,6 +12,7 @@ import SaveListing from "./pages/SaveListing";
 import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
+import AddProperty from "./components/AddProperty";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
+          <Route path="/add-property" element={<AddProperty />} />
 
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
