@@ -1,10 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import AddPropertyPage from './components/AddPropertyPage';
-import ImageSlider from './components/ImageSlider';
+import React from "react"; // Import React once
+import ReactDOM from "react-dom"; // For rendering
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // React Router components
 
+<<<<<<< HEAD
 const HomePage = () => (
   <div
     className="min-h-screen bg-gray-100 bg-cover bg-center"
@@ -23,13 +21,22 @@ const HomePage = () => (
     </div>
   </div>
 );
+=======
+import Home from "./pages/Home"; // Correct import for Home component
+import Navbar from "./components/Navbar"; // Import the Navbar component
+import AddPropertyPage from "./components/AddPropertyPage"; // Import AddPropertyPage component
+>>>>>>> cebaa9f789dadea1b20a203452a3bcec44ca22ae
 
 const App = () => {
   return (
     <Router>
+      {/* Navbar displayed on all routes */}
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* Define the route for the home page */}
+        <Route path="/" element={<Home />} />
+
+        {/* Route for Add Property Page */}
         <Route path="/add-property" element={<AddPropertyPage />} />
 
       </Routes>
@@ -37,6 +44,7 @@ const App = () => {
   );
 };
 
+// Render the App component
 ReactDOM.render(<App />, document.getElementById("root"));
 
 export default App;
