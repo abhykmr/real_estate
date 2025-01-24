@@ -1,16 +1,28 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react"; // Import React once
+import ReactDOM from "react-dom"; // For rendering
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // React Router components
 
-import Home from "../pages/Home";
+import Home from "./pages/Home"; // Correct import for Home component
+import Navbar from "./components/Navbar"; // Import the Navbar component
+import AddPropertyPage from "./components/AddPropertyPage"; // Import AddPropertyPage component
 
 const App = () => {
   return (
-    <BroweserRouter>
+    <Router>
+      {/* Navbar displayed on all routes */}
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        {/* Define the route for the home page */}
+        <Route path="/" element={<Home />} />
+
+        {/* Route for Add Property Page */}
+        <Route path="/add-property" element={<AddPropertyPage />} />
       </Routes>
-    </BroweserRouter>
+    </Router>
   );
 };
+
+// Render the App component
+ReactDOM.render(<App />, document.getElementById("root"));
 
 export default App;
