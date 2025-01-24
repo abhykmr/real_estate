@@ -4,6 +4,12 @@ import Footer from '../components/Footer';
 import SaleListing from '../components/SaleListing';
 import RentListing from '../components/RentListing';
 import OfferedListing from '../components/OfferedListing';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import SaleListing from "../components/SaleListing";
+import RentListing from "../components/RentListing";
+import OfferedListing from "../components/OfferedListing";
 
 const Home = () => {
     const navigate = useNavigate();
