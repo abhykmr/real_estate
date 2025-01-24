@@ -12,7 +12,7 @@ import SaveListing from "./pages/SaveListing";
 import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
-
+import DashboardSettings from"./pages/SettingPage";
 function App() {
   return (
     <>
@@ -28,6 +28,7 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
+          <Route path="/settings" element={<DashboardSettings />} />
 
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
