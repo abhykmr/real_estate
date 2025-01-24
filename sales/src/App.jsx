@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AddPropertyPage from './components/AddPropertyPage';
 import ImageSlider from './components/ImageSlider';
+import SalesDash from './pages/SalesDash'; // Adjust the path if it's different
+
 
 const HomePage = () => (
   <div
@@ -37,6 +39,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/add-property" element={<AddPropertyPage />} />
+        <Route path="/salesdash" element={<SalesDash />} /> {/* New Route */}
       </Routes>
     </Router>
   );
