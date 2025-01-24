@@ -242,7 +242,7 @@ const Footer = () => {
                 </div>
 
                 <p className="text-xs text-brand-blue font-heading">
-                    &copy; 2023. PROPERTY SALE. All rights reserved.
+                    &copy; 2025. PROPERTY SALE. All rights reserved.
                 </p>
             </div>
         </footer>
