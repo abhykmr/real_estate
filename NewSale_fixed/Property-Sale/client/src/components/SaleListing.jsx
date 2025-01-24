@@ -99,10 +99,10 @@ const SaleListing = () => {
             >
                 <div className="content">
                     <h2 className='text-3xl font-bold sm:text-5xl font-heading  text-brand-blue sm:text-left '>
-                        Explore Our Sale Post
+                        Explore your Sale Post
                     </h2>
                     <p className='font-content font-medium text-sm sm:text-lg mt-3 max-w-3xl'>
-                        Step into our Sale Event and discover an array of incredible offers waiting for you! Unleash your shopping desires with discounts on a wide range of products. Embrace the savings—start shopping now!
+                        Step into your Sale Event and discover an array of incredible offers waiting for you! Unleash your shopping desires with discounts on a wide range of products. Embrace the savings—start shopping now!
                     </p>
                 </div>
 
