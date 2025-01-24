@@ -28,6 +28,7 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
 
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
