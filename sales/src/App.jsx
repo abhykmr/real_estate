@@ -1,8 +1,6 @@
 import React from "react"; // Import React once
 import ReactDOM from "react-dom"; // For rendering
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // React Router components
-
-<<<<<<< HEAD
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // React Router componen
 const HomePage = () => (
   <div
     className="min-h-screen bg-gray-100 bg-cover bg-center"
@@ -21,7 +19,7 @@ const HomePage = () => (
     </div>
   </div>
 );
-=======
+
 import Home from "./pages/Home"; // Correct import for Home component
 import Navbar from "./components/Navbar"; // Import the Navbar component
 import AddPropertyPage from "./components/AddPropertyPage"; // Import AddPropertyPage component
