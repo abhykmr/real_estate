@@ -13,7 +13,7 @@ const Navbar = () => {
       {/* Navigation Links */}
       <div className="flex items-center space-x-6">
         <Link to="/" className="text-gray-800 hover:underline">Home</Link>
-        <Link to="/add-property" className="text-gray-800 hover:underline">Your Projects</Link>
+        <Link to="/AddPropertyPage" className="text-gray-800 hover:underline">Your Projects</Link>
         <Link to="/clients" className="text-gray-800 hover:underline">Your Clients</Link>
 
         {/* Settings Icon */}
