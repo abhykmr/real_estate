@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AddPropertyPage from './components/AddPropertyPage';
 import ImageSlider from './components/ImageSlider';
-
+import Dashboard from './components/salesdashboard'
 const HomePage = () => (
   <div
     className="min-h-screen bg-gray-100 bg-cover bg-center"
@@ -25,7 +25,9 @@ const HomePage = () => (
       {/* Image Slider */}
       <div className="p-6 bg-gray-50 rounded-lg shadow-md">
         <ImageSlider />
+        < Dashboard />
       </div>
+     
     </div>
   </div>
 );
