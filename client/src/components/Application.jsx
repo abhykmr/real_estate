@@ -245,18 +245,32 @@ const Application = () => {
               required
             />
             <div className="mt-2">
-              <label htmlFor="first_applicant_signature" className="block mb-1">Signature</label>
-              <input
-                type="text"
-                id="first_applicant_signature"
-                name="first_applicant_signature"
-                placeholder="(SIGNATURE) (First Applicant)"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-                value={formData.first_applicant_signature}
-                onChange={handleChange}
-                required
-              />
+                  <label htmlFor="first_applicant_signature" className="block mb-1">Signature</label>
+                  <input
+                    type="file"
+                    id="first_applicant_signature"
+                    name="first_applicant_signature"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    className="w-full border border-gray-300 rounded px-3 py-2"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        if (file.size > 20 * 1024 * 1024) { // 20 MB size limit
+                          alert("File size must be 20 MB or less.");
+                          e.target.value = ""; // Clear the input if file is too large
+                        } else {
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            handleChange({ target: { name: "first_applicant_signature", value: reader.result } });
+                          };
+                          reader.readAsDataURL(file); // Read file as data URL
+                        }
+                      }
+                    }}
+                    required
+                  />
             </div>
+
           </div>
           
           {/* Second Applicant */}
@@ -325,18 +339,32 @@ const Application = () => {
               required
             />
             <div className="mt-2">
-              <label htmlFor="second_applicant_signature" className="block mb-1">Signature</label>
-              <input
-                type="text"
-                id="second_applicant_signature"
-                name="second_applicant_signature"
-                placeholder="(SIGNATURE) (Second Applicant)"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-                value={formData.second_applicant_signature}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                 <label htmlFor="first_applicant_signature" className="block mb-1">Signature</label>
+                 <input
+                   type="file"
+                   id="first_applicant_signature"
+                   name="first_applicant_signature"
+                   accept=".jpg,.jpeg,.png,.pdf"
+                   className="w-full border border-gray-300 rounded px-3 py-2"
+                   onChange={(e) => {
+                     const file = e.target.files[0];
+                     if (file) {
+                       if (file.size > 20 * 1024 * 1024) { // 20 MB size limit
+                         alert("File size must be 20 MB or less.");
+                         e.target.value = ""; // Clear the input if file is too large
+                       } else {
+                         const reader = new FileReader();
+                         reader.onload = () => {
+                           handleChange({ target: { name: "first_applicant_signature", value: reader.result } });
+                         };
+                         reader.readAsDataURL(file); // Read file as data URL
+                       }
+                     }
+                   }}
+                   required
+                 />
+               </div>
+
           </div>
           
         </div>
