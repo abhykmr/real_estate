@@ -71,7 +71,7 @@ const Application = () => {
       
       {/* To Section */}
       <div className="mb-4 bg-light-blue p-4 rounded">
-        <p>To,</p>
+         <p className="ml-4">    To,</p>
         <p className="ml-4">HL RESIDENCY (PROPRIETORSHIP FIRM)</p>
         <p className="ml-4">Shop No. 8, Commercial Complex,</p>
         <p className="ml-4">HL City, Sector-37, Bahadurgarh</p>
