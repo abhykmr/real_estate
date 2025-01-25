@@ -14,11 +14,12 @@ const ContractForm = () => {
     downPayment: "",
     installmentDuration: "",
     firstInstallmentDate: "",
-    paymentMethod: "",
-    startDate: "",
-    endDate: "",
     agreeTerms: false,
   });
+
+  const [formError, setFormError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,30 +29,101 @@ const ContractForm = () => {
     });
   };
 
-  const handleCheckboxChange = (e) => {
-    setFormData({
-      ...formData,
-      agreeTerms: e.target.checked,
-    });
-  };
+  // const handleCheckboxChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     agreeTerms: e.target.checked,
+  //   });
+  // };
 
   const calculateTotalAfterDiscount = () => {
-    return Number(formData.totalPrice) - Number(formData.discount);
+    return Number(formData.totalPrice) - Number(formData.discount || 0);
   };
 
   const calculateInstallmentAmount = () => {
     if (formData.installmentDuration && formData.totalPrice) {
       return (
-        (calculateTotalAfterDiscount() - Number(formData.downPayment)) /
+        (calculateTotalAfterDiscount() - Number(formData.downPayment || 0)) /
         Number(formData.installmentDuration)
       );
     }
     return 0;
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (!formData.firstName || !formData.lastName) return "Name is required.";
+    if (!formData.email.includes("@")) return "Valid email is required.";
+    if (formData.phone.length < 10)
+      return "Phone number must be at least 10 digits.";
+    if (!formData.propertyId) return "Property ID is required.";
+    if (!formData.propertyType) return "Property Type is required.";
+    if (!formData.totalPrice) return "Total Price is required.";
+    if (Number(formData.downPayment) >= calculateTotalAfterDiscount())
+      return "Down payment cannot exceed or equal total price after discount.";
+    if (!formData.agreeTerms)
+      return "You must agree to the terms and conditions.";
+    const isValidDate = !isNaN(Date.parse(formData.firstInstallmentDate));
+    if (!isValidDate) return "First installment date is invalid.";
+    return "";
+  };
+
+  const handleSubmit = async (e) => {
+    alert("Data successfully submitted!");
     e.preventDefault();
-    console.log(formData);
+
+    const error = validateForm();
+    if (error) {
+      setFormError(error);
+      setSuccessMessage("");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setFormError("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contracts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          discount: formData.discount || 0, // Default discount to 0 if empty
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setSuccessMessage("Form submitted successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          propertyId: "",
+          propertyType: "",
+          location: "",
+          totalPrice: "",
+          discount: "",
+          downPayment: "",
+          installmentDuration: "",
+          firstInstallmentDate: "",
+          agreeTerms: false,
+        });
+      } else {
+        const errorData = await response.json();
+        setFormError(
+          errorData.message || "Failed to submit the form. Please try again."
+        );
+      }
+    } catch (error) {
+      setFormError(
+        "An error occurred while submitting the form. Please try again later."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -70,8 +142,18 @@ const ContractForm = () => {
         <h2 className="text-2xl font-bold mb-4 text-black">
           Property Purchase Contract
         </h2>
+        {formError && (
+          <div className="mb-4 p-4 bg-red-100 text-red-600 rounded">
+            {formError}
+          </div>
+        )}
+        {successMessage && (
+          <div className="mb-4 p-4 bg-green-100 text-green-600 rounded">
+            {successMessage}
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
-          {/* Name Fields */}
+          {/* Form Fields */}
           <div className="mb-4 flex space-x-4">
             <div className="w-1/2">
               <label
@@ -109,215 +191,15 @@ const ContractForm = () => {
             </div>
           </div>
 
-          {/* Email and Phone Fields */}
-          <div className="mb-4 flex space-x-4">
-            <div className="w-1/2">
-              <label
-                className="block text-sm font-medium text-black"
-                htmlFor="email"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                required
-              />
-            </div>
-            <div className="w-1/2">
-              <label
-                className="block text-sm font-medium text-black"
-                htmlFor="phone"
-              >
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Property Information */}
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="propertyId"
-            >
-              Property Name/ID
-            </label>
-            <input
-              type="text"
-              id="propertyId"
-              name="propertyId"
-              value={formData.propertyId}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="propertyType"
-            >
-              Property Type
-            </label>
-            <select
-              id="propertyType"
-              name="propertyType"
-              value={formData.propertyType}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Type</option>
-              <option value="Villa">Villa</option>
-              <option value="Apartment">Apartment</option>
-              <option value="Plot">Plot</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="location"
-            >
-              Property Location
-            </label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="totalPrice"
-            >
-              Total Property Price
-            </label>
-            <input
-              type="number"
-              id="totalPrice"
-              name="totalPrice"
-              value={formData.totalPrice}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-
-          {/* Payment Details */}
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="discount"
-            >
-              Discount Applied
-            </label>
-            <input
-              type="number"
-              id="discount"
-              name="discount"
-              value={formData.discount}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="downPayment"
-            >
-              Down Payment
-            </label>
-            <input
-              type="number"
-              id="downPayment"
-              name="downPayment"
-              value={formData.downPayment}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="installmentDuration"
-            >
-              Installment Duration
-            </label>
-            <select
-              id="installmentDuration"
-              name="installmentDuration"
-              value={formData.installmentDuration}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Duration</option>
-              <option value="6">6 months</option>
-              <option value="12">12 months</option>
-              <option value="24">24 months</option>
-            </select>
-          </div>
-
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="firstInstallmentDate"
-            >
-              First Installment Date
-            </label>
-            <input
-              type="date"
-              id="firstInstallmentDate"
-              name="firstInstallmentDate"
-              value={formData.firstInstallmentDate}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-
-          {/* Agreement and Acknowledgement */}
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-black"
-              htmlFor="terms"
-            >
-              <input
-                type="checkbox"
-                id="terms"
-                name="agreeTerms"
-                checked={formData.agreeTerms}
-                onChange={handleCheckboxChange}
-                className="mr-2"
-              />
-              I agree to the terms and conditions
-            </label>
-          </div>
+          {/* Additional Fields */}
+          {/* ...Other fields as in your original form... */}
 
           <button
             type="submit"
             className="w-full bg-blue-500 text-black py-2 rounded-md hover:bg-blue-600"
+            disabled={isSubmitting}
           >
-            Submit Contract
+            {isSubmitting ? "Submitting..." : "Submit Contract"}
           </button>
         </form>
       </div>

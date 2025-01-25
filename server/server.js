@@ -8,6 +8,7 @@ const connectDB = require("./config/db.js");
 require("dotenv").config();
 // const authRouter = require("./routes/authroutes.js");
 const authRouter = require("./routes/authroutes.js");
+const contractRouter = require("./routes/contractroute.js");
 
 // const userRouter = require("./routes/userRoutes");
 
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 
 app.use("/api", authRouter);
 // app.use("/api", userRouter);
+app.use("/api", contractRouter);
 
 // Catch-all route to serve a default response
 app.get("/", (req, res) => {
