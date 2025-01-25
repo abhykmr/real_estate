@@ -16,3 +16,8 @@ build/
 # IDE files
 .idea/
 .vscode/
+
+
+# Build directory
+dist/
+build/
