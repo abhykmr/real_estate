@@ -8,6 +8,7 @@ const AddPropertyPage = () => {
     description: "",
     image: null,
   });
+  const [properties, setProperties] = useState([]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -19,8 +20,16 @@ const AddPropertyPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Property Details:", formData);
-    alert("Property details submitted!");
+
+    // Create a new property entry
+    const newProperty = {
+      ...formData,
+      image: formData.image ? URL.createObjectURL(formData.image) : null,
+    };
+
+    // Add the new property to the list
+    setProperties([...properties, newProperty]);
+
     // Reset form
     setFormData({
       title: "",
@@ -29,11 +38,13 @@ const AddPropertyPage = () => {
       description: "",
       image: null,
     });
+
+    alert("Property details added successfully!");
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full">
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-xl w-full mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
           Add Your Property
         </h1>
@@ -124,6 +135,37 @@ const AddPropertyPage = () => {
             Submit Property
           </button>
         </form>
+      </div>
+
+      {/* Display Added Properties */}
+      <div className="mt-10 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Added Properties</h2>
+        {properties.length === 0 ? (
+          <p className="text-gray-600">No properties added yet.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {properties.map((property, index) => (
+              <div
+                key={index}
+                className="bg-white p-4 rounded-lg shadow-md flex flex-col"
+              >
+                {property.image && (
+                  <img
+                    src={property.image}
+                    alt={property.title}
+                    className="h-48 w-full object-cover rounded-lg mb-4"
+                  />
+                )}
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                  {property.title}
+                </h3>
+                <p className="text-sm text-gray-600">{property.location}</p>
+                <p className="text-sm text-gray-600 mb-2">${property.price}</p>
+                <p className="text-gray-700">{property.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
