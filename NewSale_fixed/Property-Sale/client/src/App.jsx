@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
-import Theme from "./components/Theme";
+// import Theme from "./components/Theme";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
@@ -12,12 +12,9 @@ import SaveListing from "./pages/SaveListing";
 import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
-<<<<<<< HEAD
 import AddProperty from "./components/AddProperty";
 
-=======
-import DashboardSettings from"./pages/SettingPage";
->>>>>>> e2135d4d3cadb56ea745d96c7582f9ef996bf84b
+import DashboardSettings from "./pages/SettingPage";
 function App() {
   return (
     <>
@@ -33,11 +30,8 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
-<<<<<<< HEAD
           <Route path="/add-property" element={<AddProperty />} />
-=======
           <Route path="/settings" element={<DashboardSettings />} />
->>>>>>> e2135d4d3cadb56ea745d96c7582f9ef996bf84b
 
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
