@@ -13,6 +13,8 @@ import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
 import AddProperty from "./components/AddProperty";
+
+import DashboardSettings from"./pages/SettingPage";
 import DashboardSettings from"./pages/SettingPage";
 import SalesDash from "./pages/SalesDash";
 import SalesTeamDashboard from "./pages/SalesTeamDashboard";
@@ -32,6 +34,9 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
+          <Route path="/add-property" element={<AddProperty />} />
+          <Route path="/settings" element={<DashboardSettings />} />
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/settings" element={<DashboardSettings />} />

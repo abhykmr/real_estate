@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import CompletionStatus from "../components/completionstatus";
 
 // import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -115,6 +116,11 @@ const Dashboard = () => {
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-6">Dashboard Overview</h1>
 
+ {/* Completion Status Component */}
+ <div className="mb-8">
+        <CompletionStatus />
+      </div>
+      
       {/* Overview Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         {overviewData.map((data, index) => (
@@ -127,6 +133,8 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
+
+         
 
       {/* Status Analysis and Revenue Generation */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
