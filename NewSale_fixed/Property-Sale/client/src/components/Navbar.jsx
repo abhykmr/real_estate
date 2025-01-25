@@ -92,13 +92,13 @@ const Navbar = ({ isLogin }) => {
               Home
             </Link>
             <Link
-              to="/your-project"
+              to="/search"
               className="text-gray-700 hover:text-blue-500"
             >
               Your Projects
             </Link>
             <Link
-              to="/your-clients"
+              to="/salesteamdashboard"
               className="text-gray-700 hover:text-blue-500"
             >
               Your Clients
