@@ -13,8 +13,8 @@ import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
 import AddProperty from "./components/AddProperty";
+import DashboardSettings from"./pages/SettingPage";
 
-import DashboardSettings from "./pages/SettingPage";
 function App() {
   return (
     <>

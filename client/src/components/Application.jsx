@@ -149,7 +149,7 @@ const Application = () => {
             type="date"
             id="cheque_date"
             name="cheque_date"
-            className="border-b border-gray-400 focus:outline-none w-32 mx-2"
+            className="border-b border-gray-400 focus:outline-none w-32 mx-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded"
             value={formData.cheque_date}
             onChange={handleChange}
             required
