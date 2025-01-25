@@ -1,5 +1,8 @@
 // src/Application.jsx
 import React, { useState } from 'react';
+import DownloadPhoto from './DownloadDocuments';
+
+
 
 const Application = () => {
   // State management for form fields
@@ -41,6 +44,9 @@ const Application = () => {
     // Optionally, reset form or provide user feedback
   };
 
+          
+
+  
   return (
     <form
       className="w-[90%] bg-white shadow-md rounded-2xl overflow-hidden p-6 mx-auto mt-16"
@@ -359,6 +365,11 @@ const Application = () => {
         >
           Submit
         </button>
+        {/* <DownloadPhoto/> */}
+      </div>
+
+      <div>
+        <DownloadPhoto/>
       </div>
       
     </form>
