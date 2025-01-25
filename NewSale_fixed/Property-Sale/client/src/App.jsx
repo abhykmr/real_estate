@@ -14,6 +14,8 @@ import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
 import AddProperty from "./components/AddProperty";
 import DashboardSettings from"./pages/SettingPage";
+import SalesDash from "./pages/SalesDash";
+import SalesTeamDashboard from "./pages/SalesTeamDashboard";
 
 function App() {
   return (
@@ -33,7 +35,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/settings" element={<DashboardSettings />} />
-
+          <Route path="/salesdash" element={<SalesDash />} /> {/* New Route */}
+          <Route path="/salesteamdashboard" element={<SalesTeamDashboard />} />
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
 //             <Route path="/profile" element={<Profile />} />
@@ -41,6 +44,7 @@ function App() {
             <Route path="/update_post/:id" element={<UpdatePost />} />
             <Route path="/saved_listing" element={<SaveListing />} />
             <Route path="/message" element={<Message />} />
+            
           </Route>
         </Routes>
       </BrowserRouter>

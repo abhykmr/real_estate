@@ -1,9 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-
-const Home = () => {
-  return <div>Home</div>;
-=======
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import SaleListing from "../components/SaleListing";
@@ -140,7 +135,6 @@ const Home = () => {
       <Footer />
     </>
   );
->>>>>>> cebaa9f789dadea1b20a203452a3bcec44ca22ae
 };
 
 export default Home;
