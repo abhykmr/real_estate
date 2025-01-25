@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
-import Theme from "./components/Theme";
+// import Theme from "./components/Theme";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
@@ -13,8 +13,8 @@ import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
 import AddProperty from "./components/AddProperty";
-
 import DashboardSettings from"./pages/SettingPage";
+
 function App() {
   return (
     <>
