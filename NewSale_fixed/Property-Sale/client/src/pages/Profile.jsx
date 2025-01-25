@@ -4,6 +4,7 @@ import BackgroundPictureSection from "../components/BackgroundPictureSection";
 import PersonalInformationSection from "../components/PersonalInformationSection";
 import SocialMediaSection from "../components/SocialMediaSection";
 import QuoteSection from "../components/QuoteSection";
+import VedioSection from "../components/VedioSection";
 //import AboutSection from "../components/AboutSection";
 //import EditProfileForm from "../components/EditProfileForm";
 
@@ -66,6 +67,9 @@ const ProfilePage = () => {
               <BackgroundPictureSection onEdit={handleEditToggle} />
               <SocialMediaSection onEdit={handleEditToggle} />
               <QuoteSection onEdit={handleEditToggle} />
+              <VedioSection onEdit={handleEditToggle} />
+              <br></br>
+              <br></br>
             </div>
           </div>
         )}
