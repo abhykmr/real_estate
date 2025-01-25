@@ -13,9 +13,14 @@ import Search from "./pages/Search";
 import Message from "./pages/Message";
 import SocketConnection from "./components/SocketConnection";
 import AddProperty from "./components/AddProperty";
+<<<<<<< HEAD
+import DashboardSettings from "./pages/SettingPage";
+// import DashboardSettings from"./pages/SettingPage";
+=======
 
 import DashboardSettings from"./pages/SettingPage";
 import DashboardSettings from"./pages/SettingPage";
+>>>>>>> c78d4d03f872814850a99b63e1300f41ab0683e5
 import SalesDash from "./pages/SalesDash";
 import SalesTeamDashboard from "./pages/SalesTeamDashboard";
 
@@ -44,12 +49,11 @@ function App() {
           <Route path="/salesteamdashboard" element={<SalesTeamDashboard />} />
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
-//             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/create_post" element={<CreatePost />} />
             <Route path="/update_post/:id" element={<UpdatePost />} />
             <Route path="/saved_listing" element={<SaveListing />} />
             <Route path="/message" element={<Message />} />
-            
           </Route>
         </Routes>
       </BrowserRouter>

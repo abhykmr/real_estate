@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsLogin }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -38,7 +40,8 @@ const Login = ({ setIsLogin }) => {
 
       if (response.ok) {
         setIsLogin(true); // Update state to indicate successful login
-        window.location.href = "http://localhost:5174/"; // Redirect to the desired external URL
+        // window.location.href = "http://localhost:5174/"; // Redirect to the desired external URL
+        navigate("/");
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
