@@ -30,12 +30,13 @@ function App() {
           <Route path="/search?" element={<Search />} />
           <Route path="/your-projects" element={<Search />} />
           <Route path="/your-clients" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/add-property" element={<AddProperty />} />
           <Route path="/settings" element={<DashboardSettings />} />
 
           {/* /---------Private Routes-----------/ */}
           <Route element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />} />
+//             <Route path="/profile" element={<Profile />} />
             <Route path="/create_post" element={<CreatePost />} />
             <Route path="/update_post/:id" element={<UpdatePost />} />
             <Route path="/saved_listing" element={<SaveListing />} />
