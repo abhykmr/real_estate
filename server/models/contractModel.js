@@ -2,19 +2,55 @@ const mongoose = require("mongoose");
 
 const contractSchema = new mongoose.Schema(
   {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    phone: { type: String, required: true },
-    propertyId: { type: String, required: true },
-    propertyType: { type: String, required: true },
-    location: { type: String, required: true },
-    totalPrice: { type: Number, required: true },
-    discount: { type: Number, default: 0 },
-    downPayment: { type: Number, required: true },
-    installmentDuration: { type: Number, required: true },
-    firstInstallmentDate: { type: Date, required: true },
-    agreeTerms: { type: Boolean, required: true },
+    lump_sum_price: { type: Number, required: true },
+    remit_sum: { type: Number, required: true },
+    rupees_amount: { type: String, required: true },
+    cheque_no: { type: String, required: true },
+    cheque_date: { type: Date, required: true },
+    bank_name: { type: String, required: true },
+
+    // First Applicant Details
+    first_applicant_name: { type: String, required: true },
+    first_applicant_sdw: { type: String, required: true }, // Son/Daughter/Wife of
+    first_applicant_address: { type: String, required: true },
+    first_applicant_pincode: { type: String, required: true, match: /^\d{6}$/ }, // Assuming Indian pincode format
+    first_applicant_phone: {
+      type: String,
+      required: true,
+      match: /^[6-9]\d{9}$/,
+    }, // Assuming Indian phone format
+    first_applicant_email: {
+      type: String,
+      required: true,
+      match: /.+\@.+\..+/,
+    },
+    first_applicant_signature: { type: String, required: true }, // Storing base64 or file reference
+
+    // Second Applicant Details
+    second_applicant_name: { type: String, required: true },
+    second_applicant_sdw: { type: String, required: true }, // Son/Daughter/Wife of
+    second_applicant_address: { type: String, required: true },
+    second_applicant_pincode: {
+      type: String,
+      required: true,
+      match: /^\d{6}$/,
+    },
+    second_applicant_phone: {
+      type: String,
+      required: true,
+      match: /^[6-9]\d{9}$/,
+    },
+    second_applicant_email: {
+      type: String,
+      required: true,
+      match: /.+\@.+\..+/,
+    },
+    second_applicant_signature: { type: String, required: true }, // Storing base64 or file reference
+
+    // Office Use Fields
+    application_received_by: { type: String, default: "" },
+    broker_name: { type: String, default: "" },
+    application_status: { type: String, default: "Pending" },
   },
   { timestamps: true }
 );

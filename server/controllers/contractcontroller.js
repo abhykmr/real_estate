@@ -2,78 +2,52 @@ const Contract = require("../models/contractModel");
 
 const createContract = async (req, res) => {
   try {
-    console.log("Request receive:");
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      propertyId,
-      propertyType,
-      location,
-      totalPrice,
-      discount = 0,
-      downPayment,
-      installmentDuration,
-      firstInstallmentDate,
-      agreeTerms,
-    } = req.body;
+    const applicationData = req.body;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !phone ||
-      !propertyId ||
-      !propertyType ||
-      !totalPrice ||
-      !downPayment ||
-      !installmentDuration ||
-      !firstInstallmentDate ||
-      !agreeTerms
-    ) {
-      return res
-        .status(400)
-        .json({ message: "All required fields must be filled." });
+    // Validate required fields
+    const requiredFields = [
+      "lump_sum_price",
+      "remit_sum",
+      "rupees_amount",
+      "cheque_no",
+      "cheque_date",
+      "bank_name",
+      "first_applicant_name",
+      "first_applicant_sdw",
+      "first_applicant_address",
+      "first_applicant_pincode",
+      "first_applicant_phone",
+      "first_applicant_email",
+      "first_applicant_signature",
+      "second_applicant_name",
+      "second_applicant_sdw",
+      "second_applicant_address",
+      "second_applicant_pincode",
+      "second_applicant_phone",
+      "second_applicant_email",
+      "second_applicant_signature",
+    ];
+
+    for (const field of requiredFields) {
+      if (!applicationData[field]) {
+        return res
+          .status(400)
+          .json({ message: `Field "${field}" is required.` });
+      }
     }
 
-    const discountedPrice = Number(totalPrice) - Number(discount);
-    if (Number(downPayment) >= discountedPrice) {
-      return res.status(400).json({
-        message:
-          "Down payment cannot exceed or equal the total price after discount.",
-      });
-    }
+    // Create and save the new application
+    const newApplication = new Contract(applicationData);
+    const savedApplication = await newApplication.save();
 
-    const newContract = new Contract({
-      firstName,
-      lastName,
-      email,
-      phone,
-      propertyId,
-      propertyType,
-      location,
-      totalPrice: Number(totalPrice),
-      discount: Number(discount),
-      downPayment: Number(downPayment),
-      installmentDuration: Number(installmentDuration),
-      firstInstallmentDate: new Date(firstInstallmentDate),
-      agreeTerms,
-    });
-
-    const savedContract = await newContract.save();
+    // Respond with success
     res.status(201).json({
-      message: "Contract saved successfully",
-      contract: savedContract,
+      message: "Application submitted successfully.",
+      application: savedApplication,
     });
   } catch (error) {
-    console.error("Error creating contract:", error.message || error);
-    if (error.code === 11000 && error.keyPattern?.email) {
-      return res
-        .status(400)
-        .json({ message: "This email is already associated with a contract." });
-    }
-    res.status(500).json({ message: "Internal server error", error });
+    console.error("Error creating application:", error);
+    res.status(500).json({ message: "Internal server error.", error });
   }
 };
 
