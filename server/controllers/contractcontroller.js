@@ -1,4 +1,7 @@
 const Contract = require("../models/contractModel");
+// const pdf = require("html-pdf");
+// const fs = require("fs");
+// const path = require("path");
 
 const createContract = async (req, res) => {
   try {
@@ -39,7 +42,6 @@ const createContract = async (req, res) => {
     // Create and save the new application
     const newApplication = new Contract(applicationData);
     const savedApplication = await newApplication.save();
-
     // Respond with success
     res.status(201).json({
       message: "Application submitted successfully.",
