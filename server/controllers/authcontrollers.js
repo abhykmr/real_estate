@@ -95,18 +95,6 @@
 
 // module.exports = { signup, login, logout };
 
-
-
-
-
-
-
-
-
-
-
-
-
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -126,32 +114,34 @@ const signup = async (req, res) => {
     // Check if user already exists
     const userExists = await User.findOne({ email: normalizedEmail });
     if (userExists) {
-      console.log("Signup failed: User already exists:", normalizedEmail);
-      return res.status(400).json({ 
+      // console.log("Signup failed: User already exists:", normalizedEmail);
+      return res.status(400).json({
         success: false,
-        message: "User already exists" 
+        message: "User already exists",
       });
     }
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed password successfully generated.");
+    // console.log("Hashed password successfully generated.");
 
     // Create new user with additional fields
-    const user = new User({ 
-      name, 
-      email: normalizedEmail, 
+    const user = new User({
+      name,
+      email: normalizedEmail,
       password: hashedPassword,
       phone,
       address,
-      userType
+      userType,
     });
     await user.save();
     console.log("User successfully created:", normalizedEmail);
 
     // Check if JWT secret is defined
     if (!process.env.JWT_SEC) {
-      throw new Error("JWT secret is not defined. Please set JWT_SEC in your .env file.");
+      throw new Error(
+        "JWT secret is not defined. Please set JWT_SEC in your .env file."
+      );
     }
 
     // Create and send JWT token
@@ -162,18 +152,18 @@ const signup = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
     });
-    
-    res.status(201).json({ 
+
+    res.status(201).json({
       success: true,
       message: "Signup successful! Welcome to our platform.",
-      token, 
-      userId: user._id 
+      token,
+      userId: user._id,
     });
   } catch (error) {
     console.error("Signup error:", error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
-      message: "Server error during signup" 
+      message: "Server error during signup",
     });
   }
 };
@@ -190,9 +180,9 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: normalizedEmail });
     if (!user) {
       console.log("Login failed: User not found:", normalizedEmail);
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        message: "Invalid email or password" 
+        message: "Invalid email or password",
       });
     }
 
@@ -202,9 +192,9 @@ const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       console.log("Login failed: Invalid password for user:", normalizedEmail);
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        message: "Invalid email or password" 
+        message: "Invalid email or password",
       });
     }
 
@@ -212,7 +202,9 @@ const login = async (req, res) => {
 
     // Check if JWT secret is defined
     if (!process.env.JWT_SEC) {
-      throw new Error("JWT secret is not defined. Please set JWT_SEC in your .env file.");
+      throw new Error(
+        "JWT secret is not defined. Please set JWT_SEC in your .env file."
+      );
     }
 
     // Generate JWT
@@ -228,17 +220,17 @@ const login = async (req, res) => {
     });
     console.log("Cookie set successfully for:", normalizedEmail);
 
-    res.status(200).json({ 
+    res.status(200).json({
       success: true,
       message: "Login successful!",
-      token, 
-      userId: user._id 
+      token,
+      userId: user._id,
     });
   } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
-      message: "Something went wrong. Please try again later." 
+      message: "Something went wrong. Please try again later.",
     });
   }
 };
@@ -247,15 +239,15 @@ const login = async (req, res) => {
 const logout = (req, res) => {
   try {
     res.clearCookie("token");
-    res.status(200).json({ 
+    res.status(200).json({
       success: true,
-      message: "Logout successful!" 
+      message: "Logout successful!",
     });
   } catch (error) {
     console.error("Logout error:", error);
-    res.status(500).json({ 
+    res.status(500).json({
       success: false,
-      message: "Logout failed!" 
+      message: "Logout failed!",
     });
   }
 };

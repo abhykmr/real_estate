@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Hooks/AuthProvider";
 
-const Login = ({ setIsLogin }) => {
+const Login = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -39,8 +41,9 @@ const Login = ({ setIsLogin }) => {
       const data = await response.json();
 
       if (response.ok) {
-        setIsLogin(true); // Update state to indicate successful login
+        // Update state to indicate successful login
         // window.location.href = "http://localhost:5174/"; // Redirect to the desired external URL
+        login();
         navigate("/");
       } else {
         setError(data.message || "Login failed. Please try again.");

@@ -1,6 +1,7 @@
 // src/Application.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DownloadPhoto from "./DownloadDocuments";
+import { useNavigate } from "react-router-dom";
 
 const Application = () => {
   // State management for form fields
@@ -27,6 +28,10 @@ const Application = () => {
     second_applicant_signature: "",
   });
 
+  // const [statusData, setStatusData] = useState({
+
+  // })
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -34,6 +39,9 @@ const Application = () => {
       [name]: value,
     }));
   };
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +80,7 @@ const Application = () => {
           second_applicant_signature: "",
         });
         alert("Data successfully submitted!");
+        navigate("/dashboard");
       } else {
         alert("Failed to submit data!");
       }
@@ -79,6 +88,12 @@ const Application = () => {
       alert("An error occurred: " + error.message);
     }
   };
+
+  useEffect(() => {
+    if (isSubmitted) {
+      navigate("/dashboard");
+    }
+  }, [isSubmitted, navigate]);
 
   return (
     <form

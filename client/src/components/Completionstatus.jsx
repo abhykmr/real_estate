@@ -1,28 +1,31 @@
 import { useState, useEffect } from "react";
+import { RefreshCw } from "lucide-react"; // Import the refresh icon
 
 const CompletionStatus = () => {
-  const [status, setStatus] = useState("Review"); // Initial status
+  const [status, setStatus] = useState("Payment Done");
   const [isDocumentGenerated, setIsDocumentGenerated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false); // State for refresh action
 
   // Fetch application status from the backend
+  const fetchApplicationStatus = async () => {
+    setRefreshing(true); // Indicate that the refresh is happening
+    try {
+      const response = await fetch("/api/application-status"); // Replace with your actual API endpoint
+      const data = await response.json();
+
+      setStatus(data.status);
+      setIsDocumentGenerated(data.isDocumentGenerated);
+    } catch (error) {
+      console.error("Error fetching application status:", error);
+    } finally {
+      setLoading(false);
+      setRefreshing(false); // Reset refreshing state
+    }
+  };
+
   useEffect(() => {
-    const fetchApplicationStatus = async () => {
-      try {
-        const response = await fetch("/api/application-status"); // Replace with your actual API endpoint
-        const data = await response.json();
-
-        // Assume the response returns: { status: "Approved", isDocumentGenerated: false }
-        setStatus(data.status);
-        setIsDocumentGenerated(data.isDocumentGenerated);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching application status:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchApplicationStatus();
+    fetchApplicationStatus(); // Initial fetch
   }, []);
 
   // Update application status in the backend
@@ -51,10 +54,12 @@ const CompletionStatus = () => {
 
   // Handle button actions
   const handlePayment = () => updateApplicationStatus("Payment Done");
-  const handleGenerateDocument = () => updateApplicationStatus("Document Generated");
+  const handleGenerateDocument = () =>
+    updateApplicationStatus("Document Generated");
 
   // Status messages
   const statusMessages = {
+    Accepted: "Your Application has been Accepted!",
     Review: "Your application is under review.",
     Approved: "Your application is approved. Proceed to payment.",
     "Payment Done": "Payment successful! Generate your application document.",
@@ -62,20 +67,38 @@ const CompletionStatus = () => {
   };
 
   if (loading) {
-    return <div className="text-center mt-8">Loading application status...</div>;
+    return (
+      <div className="text-center mt-8">Loading application status...</div>
+    );
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto relative">
+      {/* Refresh Button */}
+      <button
+        onClick={fetchApplicationStatus}
+        className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-all"
+        aria-label="Refresh Status"
+      >
+        <RefreshCw
+          size={20}
+          className={`${refreshing ? "animate-spin" : ""}`} // Add spin animation when refreshing
+        />
+      </button>
+
       <h2 className="text-2xl font-bold mb-4">Application Status</h2>
-      <p className="text-lg font-medium text-gray-600 mb-6">{statusMessages[status]}</p>
+      <p className="text-lg font-medium text-gray-600 mb-6">
+        {statusMessages[status]}
+      </p>
 
       {/* Progress Bar */}
       <div className="relative w-full h-4 bg-gray-300 rounded-full mb-6">
         <div
           className={`absolute top-0 left-0 h-full rounded-full ${
-            status === "Review"
-              ? "bg-yellow-400 w-1/3"
+            status === "Accepted"
+              ? "bg-green-400 w-1/4"
+              : status === "Review"
+              ? "bg-yellow-400 w-1/4"
               : status === "Approved"
               ? "bg-blue-500 w-2/3"
               : status === "Payment Done"
