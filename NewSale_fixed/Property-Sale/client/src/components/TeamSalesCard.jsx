@@ -1,8 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const TeamSalesCard = () => {
+  const navigate = useNavigate(); // Define navigate function
+
   return (
-    <div className="p-4 bg-white text-black rounded shadow">
+    <div className="p-4 bg-white text-black rounded shadow relative">
+      {/* Button */}
+      <button
+        onClick={() => navigate("/salesdash")} // Use navigate function
+        className="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+      >
+        Check Sales
+      </button>
+
       <h2 className="text-xl font-semibold mb-4">Team sales</h2>
       <div className="flex items-center gap-8 mb-4">
         <div>
