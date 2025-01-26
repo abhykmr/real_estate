@@ -103,6 +103,12 @@ const Navbar = ({ isLogin }) => {
             >
               Your Clients
             </Link>
+            <Link
+              to="/your-sales-team"
+              className="text-gray-700 hover:text-blue-500"
+            >
+              Your Sales Team
+            </Link>
 
             <Link to={"/settings"}>
               <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
