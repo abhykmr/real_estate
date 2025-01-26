@@ -29,7 +29,17 @@ const AddProperty = () => {
 
     const handleImageUpload = (e) => {
         const files = Array.from(e.target.files);
-        setFormState({ ...formState, images: files });
+        if (files.length + formState.images.length > 5) {
+            alert('You can only upload up to 5 images.');
+            return;
+        }
+        setFormState({ ...formState, images: [...formState.images, ...files] });
+    };
+
+    const removeImage = (index) => {
+        const updatedImages = [...formState.images];
+        updatedImages.splice(index, 1);
+        setFormState({ ...formState, images: updatedImages });
     };
 
     const handleSubmit = async (e) => {
@@ -78,7 +88,7 @@ const AddProperty = () => {
                         name="title"
                         value={formState.title}
                         onChange={handleInputChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded px-3 py-2 bg-white"
                         required
                     />
                 </div>
@@ -88,7 +98,7 @@ const AddProperty = () => {
                         name="description"
                         value={formState.description}
                         onChange={handleInputChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded px-3 py-2 bg-white"
                         required
                     />
                 </div>
@@ -99,20 +109,38 @@ const AddProperty = () => {
                         name="price"
                         value={formState.price}
                         onChange={handleInputChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded px-3 py-2 bg-white"
                         required
                     />
                 </div>
                 <div>
-                    <label className="block text-lg font-medium">Images</label>
+                    <label className="block text-lg font-medium">Images (Max 5)</label>
                     <input
                         type="file"
                         name="images"
                         multiple
                         onChange={handleImageUpload}
-                        className="w-full"
+                        className="w-full bg-white border rounded px-3 py-2"
                         accept="image/*"
                     />
+                    <div className="mt-4 grid grid-cols-3 gap-4">
+                        {formState.images.map((image, index) => (
+                            <div key={index} className="relative">
+                                <img
+                                    src={URL.createObjectURL(image)}
+                                    alt="Preview"
+                                    className="w-full h-32 object-cover rounded-lg"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => removeImage(index)}
+                                    className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div>
                     <label className="block text-lg font-medium">Type</label>
@@ -120,7 +148,7 @@ const AddProperty = () => {
                         name="type"
                         value={formState.type}
                         onChange={handleInputChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded px-3 py-2 bg-white"
                     >
                         <option value="sale">For Sale</option>
                         <option value="rent">For Rent</option>
