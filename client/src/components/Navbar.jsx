@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
+import { useAuth } from "../Hooks/AuthProvider";
 
 const Navbar = () => {
+  const { isAuthenticated } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -29,12 +31,21 @@ const Navbar = () => {
             <div className="absolute right-3 -top-2 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
             <ul className="space-y-2">
               <li className="group">
-                <Link
-                  to="/login"
-                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
-                >
-                  Login
-                </Link>
+                {isAuthenticated ? (
+                  <Link
+                    to="/logout"
+                    className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                  >
+                    Logout
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                  >
+                    Login
+                  </Link>
+                )}
               </li>
               <li className="group">
                 <Link
@@ -47,13 +58,17 @@ const Navbar = () => {
               </li>
               <li className="border-t border-gray-100 my-2"></li>
               <li className="group">
-                <Link
-                  to="/signup"
-                  href="/signup"
-                  className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
-                >
-                  Sign Up
-                </Link>
+                {isAuthenticated ? (
+                  " "
+                ) : (
+                  <Link
+                    to="/signup"
+                    href="/signup"
+                    className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
+                  >
+                    Sign Up
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

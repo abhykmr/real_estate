@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { RefreshCw } from "lucide-react"; // Import the refresh icon
 
 const CompletionStatus = () => {
-  const [status, setStatus] = useState("Accepted");
+  const [status, setStatus] = useState("Payment Done");
   const [isDocumentGenerated, setIsDocumentGenerated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false); // State for refresh action
