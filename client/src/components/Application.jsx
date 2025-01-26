@@ -1,5 +1,5 @@
 // src/Application.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import DownloadPhoto from "./DownloadDocuments";
 
 const Application = () => {
@@ -384,7 +384,21 @@ const Application = () => {
           </div>
         </div>
       </div>
-
+      {/* For Office Use */}
+      <div className="mb-4 px-6">
+        <h3 className="font-semibold">For office use</h3>
+        <div className="space-y-2 mt-2">
+          <p>
+            Application received by ___________________________________________
+          </p>
+          <p>
+            Name of Broker ___________________________________________________
+          </p>
+          <p>
+            Status of application ____________________________________________
+          </p>
+        </div>
+      </div>
       {/* Submit Button */}
       <div className="text-center">
         <button
@@ -393,6 +407,9 @@ const Application = () => {
         >
           Submit
         </button>
+      </div>
+      <div className="my-2">
+        <DownloadPhoto />
       </div>
     </form>
   );
