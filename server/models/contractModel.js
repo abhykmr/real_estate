@@ -17,7 +17,7 @@ const contractSchema = new mongoose.Schema(
     first_applicant_phone: {
       type: String, // Changed to String
       required: true,
-      match: /^[6-9]\d{9}$/, // Phone number regex
+      match: /^[0-9]\d{9}$/, // Phone number regex
     },
     first_applicant_email: {
       type: String,
@@ -38,7 +38,7 @@ const contractSchema = new mongoose.Schema(
     second_applicant_phone: {
       type: String, // Changed to String
       required: true,
-      match: /^[6-9]\d{9}$/,
+      match: /^[0-9]\d{9}$/,
     },
     second_applicant_email: {
       type: String,
@@ -47,10 +47,10 @@ const contractSchema = new mongoose.Schema(
     },
     second_applicant_signature: { type: String, required: true },
 
-    //   // Office Use Fields
-    //   application_received_by: { type: String, default: "" },
-    //   broker_name: { type: String, default: "" },
-    //   application_status: { type: String, default: "Pending" },
+    // Office Use Fields
+    application_received_by: { type: String, default: "" },
+    broker_name: { type: String, default: "" },
+    application_status: { type: String, default: "Pending" },
   },
   { timestamps: true }
 );
