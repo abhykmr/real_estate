@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Home, User, Bell, Search, Menu, X, Settings } from "lucide-react";
 import NotificationDropdown from "./NotificationDropdown"; // Import the updated component
 
-const Navbar = ({ isLogin }) => {
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -38,7 +38,6 @@ const Navbar = ({ isLogin }) => {
               </li>
               <li className="group">
                 <Link
-            
                   to="/Profile"
                   href="/profile"
                   className="flex items-center px-3 py-2 text-sm text-gray-700 rounded-md group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-200"
@@ -92,17 +91,16 @@ const Navbar = ({ isLogin }) => {
             <Link to="/" className="text-gray-700 hover:text-blue-500">
               Home
             </Link>
-            <Link to="/our-project" className="text-gray-700 hover:text-blue-500">
+            <Link
+              to="/our-project"
+              className="text-gray-700 hover:text-blue-500"
+            >
               Our Projects
             </Link>
             <Link to="/dashboard" className="text-gray-700 hover:text-blue-500">
               Dashboard
             </Link>
-            
-           
-         
 
-           
             <Link to={"/settings"}>
               <button className="text-gray-700 hover:text-blue-500 focus:outline-none p-2">
                 <Settings className="w-5 h-5" />
@@ -171,4 +169,4 @@ const Navbar = ({ isLogin }) => {
   );
 };
 
-export default Navbar
+export default Navbar;

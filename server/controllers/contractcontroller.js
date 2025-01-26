@@ -53,4 +53,6 @@ const createContract = async (req, res) => {
   }
 };
 
-module.exports = { createContract };
+const statusController = async () => {};
+
+module.exports = { createContract, statusController };

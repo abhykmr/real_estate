@@ -1,5 +1,3 @@
-// src/App.jsx
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -26,18 +24,11 @@ import Project1 from "./pages/Project1";
 import Application from "./components/Application";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false); // Toggle for login state
-
-  // PrivateRoute for Dashboard
-  // const PrivateRoute = ({ children }) => {
-  //   return isLogin ? children : <Navigate to="/login" replace />;
-  // };
-
   return (
     <BrowserRouter>
       {/* Navbar is outside of Routes to appear on all pages */}
       {/* Navbar is outside of Routes */}
-      <Navbar isLogin={isLogin} />
+      <Navbar />
       <Routes>
         {/* Home Route */}
         <Route path="/" element={<Home />} />
@@ -54,8 +45,8 @@ const App = () => {
           element={<CurrentProjects projects={projects} />}
         />
 
- {/* Application Form Route */}
- <Route path="/application" element={<Application />} />
+        {/* Application Form Route */}
+        <Route path="/application" element={<Application />} />
 
         {/* Project Detail Route */}
         <Route
@@ -63,24 +54,10 @@ const App = () => {
           element={<ProjectDetail projects={projects} />}
         />
 
-        {/* Protected Dashboard Route */}
-        {/* <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        /> */}
-        {/* {isLogin ? (
-          <Route path="/dahsboard" element={<Dashboard />} />
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )} */}
         <Route path="/dashboard" element={<Dashboard />} />
         {/* 404 Not Found Route */}
         <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/settings" element={<SettingsPage />} />
