@@ -1,18 +1,10 @@
 const mongoose = require("mongoose");
 
-const ApplicationSchema = new mongoose.Schema(
+const statusSchema = new mongoose.Schema(
   {
-    applicantName: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    phone: {
-      type: String,
+    contractId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Contract", // Reference to the Contract schema
       required: true,
     },
     status: {
@@ -24,7 +16,7 @@ const ApplicationSchema = new mongoose.Schema(
         "Payment Done",
         "Document Generated",
       ],
-      default: "accepted",
+      default: "Review",
     },
     isDocumentGenerated: {
       type: Boolean,
@@ -51,4 +43,4 @@ const ApplicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Application", ApplicationSchema);
+module.exports = mongoose.model("Status", statusSchema);
