@@ -1,39 +1,56 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Hooks/AuthProvider";
 
-const Login = ({ setIsLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+const Login = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    userType: "client", // Default to "client" or any desired value
+  });
+  const [error, setError] = useState("");
+
+  const userTypes = [
+    { value: "client", label: "Client" },
+    { value: "company", label: "Company" },
+    { value: "realEstateEntity", label: "Real Estate Entity" },
+  ];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch("https://real-estate-backend-u0um.onrender.com/api/login", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
       });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
 
       const data = await response.json();
 
-      if (response.status === 200) {
-        // Successfully logged in, update the login state
-        setIsLogin(false); // Update state to indicate that the user is logged in
-        navigate("/"); // Redirect to home page after successful login
+      if (response.ok) {
+        // Update state to indicate successful login
+        // window.location.href = "http://localhost:5174/"; // Redirect to the desired external URL
+        login();
+        navigate("/");
       } else {
-        setError(data.message); // Display error message if login fails
+        setError(data.message || "Login failed. Please try again.");
       }
     } catch (error) {
-      setError("Something went wrong. Please try again later.", error.message);
+      setError("Something went wrong. Please try again later.");
     }
   };
 
@@ -65,11 +82,34 @@ const Login = ({ setIsLogin }) => {
                 id="email"
                 name="email"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="userType"
+                className="block text-sm font-medium text-gray-700"
+              >
+                User Type
+              </label>
+              <select
+                id="userType"
+                name="userType"
+                value={formData.userType}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {userTypes.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="mb-6">
               <label
                 htmlFor="password"
@@ -82,8 +122,8 @@ const Login = ({ setIsLogin }) => {
                 id="password"
                 name="password"
                 required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>

@@ -34,7 +34,14 @@ const ProjectDetail = ({ projects }) => {
         alt={project.name}
         className="w-full h-64 object-cover rounded-lg my-4"
       />
-      <p className="text-gray-700 mt-2">{project.description}</p>
+      <p className="text-gray-700 mt-2">
+        {project.description}
+      </p>
+      <Link to="/application">
+        <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition-colors duration-300">
+          BOOK NOW
+        </button>
+      </Link>
       {/* You can add more detailed information about the project here */}
     </div>
   );

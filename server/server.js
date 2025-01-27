@@ -8,6 +8,9 @@ const connectDB = require("./config/db.js");
 require("dotenv").config();
 // const authRouter = require("./routes/authroutes.js");
 const authRouter = require("./routes/authroutes.js");
+const contractRouter = require("./routes/contractroute.js");
+const ejs = require("ejs");
+const path = require("path");
 
 // const userRouter = require("./routes/userRoutes");
 
@@ -18,17 +21,42 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, "public")));
 
-const corsOptions = {
-  origin: "https://real-estate-client-b9wq.onrender.com", // Your frontend URL
-  credentials: true, // Allow cookies to be sent
-};
-app.use(cors(corsOptions));
 
-// Routes
+// Set EJS as the view engine
+app.set("view engine", "ejs");
+
+
+// const corsOptions = {
+//   origin: "http://localhost:5173", // Your frontend URL
+//   credentials: true, // Allow cookies to be sent
+// };
+// app.use(cors(corsOptions));
+if (process.env.NODE_ENV === "local") {
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      credentials: true,
+    })
+  );
+} else {
+  app.use(
+    cors({
+      origin: "*",
+      credentials: true,
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    })
+  );
+}
+
+// Route
 
 app.use("/api", authRouter);
 // app.use("/api", userRouter);
+app.use("/api", contractRouter);
 
 // Catch-all route to serve a default response
 app.get("/", (req, res) => {
