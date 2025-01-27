@@ -23,7 +23,7 @@ import PropertyListingPage from "./components/PropertyDetails";
 import Project1 from "./pages/Project1";
 import Application from "./components/Application";
 import ProtectedRoute from "./Hooks/ProtectRoute";
-import { AuthProvider } from "./Hooks/AuthProvider";
+import { AuthProvider } from "./Hooks/AuthProvider.jsx";
 
 const App = () => {
   return (
