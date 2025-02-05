@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import CompletionStatus from "../components/completionstatus";
+import CompletionStatus from "../components/Completionstatus";
 
 // import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
