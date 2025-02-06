@@ -25,8 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // Set EJS as the view engine
 app.set("view engine", "ejs");
+
 
 // const corsOptions = {
 //   origin: "http://localhost:5173", // Your frontend URL
