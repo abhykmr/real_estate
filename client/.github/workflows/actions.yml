@@ -1,0 +1,8 @@
+name: ci/cd initialised
+on: push
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "greet User"
+        run: echo "Hello, World!"
